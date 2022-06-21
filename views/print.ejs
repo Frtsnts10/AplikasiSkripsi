@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <title>Hasil Rekomendasi</title>
+</head>
+
+<style>
+ 
+    .navbar{
+      display: flex;
+      height: 80px;
+      text-align: center;
+      justify-content: center;
+    }
+    .logo-image{
+      position: absolute;
+      left: 0px;
+      width: 46px;
+      height: 46px;
+    }
+    .title{
+      position: absolute;
+      top:10px;
+      width: 500px;
+      font-size: 20px;
+    } 
+
+    .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #3e8e41;
+    }
+
+    .dropdown {
+        float: right;
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        right: 0;
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown a:hover {background-color: #ddd;}
+
+    .show {display: block;}
+
+    table {
+        margin: auto;
+        text-align: center;
+        justify-content: center;
+        border: 1px solid black;
+        width: 60%;
+        border-spacing: 30px;
+        border-collapse:collapse;
+        }
+        th{
+        border: 1px solid black;
+        margin: auto;
+        text-align: center;
+        justify-content: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        background: black;
+        color: white;
+    
+        }
+        td{
+        border: 1px solid black;
+        width: 20%;
+        justify-content: center;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        }
+</style>
+
+
+<body>
+    
+    <!-- Header -->
+    <header class="w3-container w3-center" style="padding:10px 16px; background-image: url(untar.jpg); background-size: cover; display: flex;">
+        <img src="Logo.jpg"  width="250">
+        <h1 class="w3-margin" style="color: white; font-weight: bolder; margin: auto;";">Aplikasi Prediksi Nilai dan Rekomendasi Mata Kuliah Universitas Tarumanagara</h1>
+    </header>
+
+    <div style="justify-content: center; text-align: center;">
+        <h1>Hasil Rekomendasi Nilai</h1>
+        <br>
+    </div>
+
+
+    <p align="right" style="padding-right: 20px;">
+        <button onclick="window.print()">Print</button>
+    </p>
+    <table id="" style="">
+        <tr>
+            <th>Nama Mahasiswa</th>
+            <th>Nilai Rata-rata</th>
+            <th>Hasil Nilai</th>
+            <th>Rekomendasi ?</th>
+            <th>Matakuliah Rekomendasi</th>
+        </tr>
+        
+        <tr>
+            <td id="tampilan"></td>
+            <td id="meannilai"></td>
+            <td id= "hasil" ></td>
+            <td id="rekomendasi"></td>
+            <td id="rek"> </td>
+        </tr>
+
+    </table>
+
+    <br><br>
+    <center>
+        <button style="margin: auto; justify-content: center;"><a href="IndexMhs">Kembali</a></button>
+    </center>
+    
+   
+    <span id="mhs" hidden><%= JSON.stringify(datalist) %></span>
+    
+    
+    <script>
+    var mhs = JSON.parse($('#mhs').text());
+    $('#mhs').remove();
+    // console.log(mhs)
+
+
+    //    Nampilin Nama Sesuai yang dipilih
+    var muncul = window.localStorage.getItem("pilihan");
+    // console.log(muncul)
+    
+    // Nampilin Nilai Rata
+    var nilairatamhs = window.localStorage.getItem("meannilai");
+    nilairatamhs = (nilairatamhs) ? JSON.parse(nilairatamhs) : [];
+    var hasilnilai = window.localStorage.getItem("hasilmhs");
+    hasilnilai = (hasilnilai) ? JSON.parse(hasilnilai) : [];
+    var rekmatkul = window.localStorage.getItem("rek");
+    rekmatkul = (rekmatkul) ? JSON.parse(rekmatkul) : [];
+    
+    console.log(nilairatamhs)
+    
+    for(var a = 0; a < mhs.length; a++){
+        if(mhs[a].name == muncul){
+            document.getElementById("tampilan").innerHTML = mhs[a].name;
+            document.getElementById("rekomendasi").innerHTML = mhs[a].rekomendasi;
+            // console.log(mhs[a].name)
+            document.getElementById("meannilai").innerHTML = nilairatamhs[a];
+            document.getElementById("hasil").innerHTML = hasilnilai[a];
+            document.getElementById("rek").innerHTML = rekmatkul[a];
+        }
+    }
+    </script>
+
+</body>
