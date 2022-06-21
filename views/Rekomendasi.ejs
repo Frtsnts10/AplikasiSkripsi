@@ -551,22 +551,9 @@
             }
         }
 
-        for(var x = 0; x < total.length; x++ ){
-            for( var z = 0; z < a[x].Nilai.length; z++){
-                t[x] =  a[x].Nilai.length - meanMK1[x]
-            }
-        }
-
-        console.log(t)
-        console.log(total)
         console.log(meanMK1)
         window.localStorage.setItem("meannilai", JSON.stringify(meanMK1));
 
-        for(var z = 0; z < total.length; z++ ){
-            for( var j = 0; j < a[z].Nilai.length; j++){
-                sim[j] = ( (t[0].Nilai[j] * t[z].Nilai[j]) / (Math.sqrt(t[0].Nilai[j]*2)) *(Math.sqrt(t[z].Nilai[j]*2))) *100;
-            }
-        }
         
         // Nampilin Hasil dan Matakuliah Rekomendasi
         var hasilnilai = [];
