@@ -7,7 +7,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var methodOverride = require("method-override");
 var indexRoutes = require("./Routes/Index");
-var schemaDataAdm = require("./models/ModelAdm");
+
 var schemaDataMhs = require("./models/ModelMhs");
 
 app.use(require("express-session")({
@@ -20,12 +20,9 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LocalStrategy(schemaDataAdm.authenticate()));
+
 passport.use(new LocalStrategy(schemaDataMhs.authenticate()));
 
-// use static serialize and deserialize of model for passport session support
-passport.serializeUser(schemaDataAdm.serializeUser());
-passport.deserializeUser(schemaDataAdm.deserializeUser());
 
 // use static serialize and deserialize of model for passport session support
 passport.serializeUser(schemaDataMhs.serializeUser());

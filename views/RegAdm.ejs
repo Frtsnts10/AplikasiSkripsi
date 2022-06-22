@@ -1,143 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-    />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="admin-login-script.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Registrasi Admin</title>
-  </head>
+</head>
 
-  <style>
-    body,
-    html {
-      height: 100%;
-      background-repeat: no-repeat; /*background-image: linear-gradient(rgb(12, 97, 33),rgb(104, 145, 162));*/
-      background: black;
-      position: relative;
+<style>
+    * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
     }
-    #login-box {
-      position: absolute;
-      top: 200px;
-      left: 50%;
-      transform: translateX(-50%);
-      min-width: 500px;
-      height: 55%;
-      margin: 0 auto;
-      border: 1px solid black;
-      background: rgba(48, 46, 45, 1);
+            
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f0f2f5;
+        color: #1c1e21;
+    }
 
-      border-radius: 20px;
-      padding: 20px;
-      z-index: 9999;
+    main {
+        height: 90vh;
+        width: 100vw;
+        position: relative;
+        margin: 0 auto;
     }
-    #login-box .logo .logo-caption {
-      text-align: center;
-    }
-    #login-box .logo .tweak {
-      color: green;
-    }
-    #login-box .controls {
-      padding-top: 10px;
-    }
-    #login-box .controls input {
-      margin: auto;
-      width: 70%;
-      border-radius: 20px;
-      background: rgb(98, 96, 96);
-      border: 0px;
-      color: white;
-    }
-    #login-box .controls input:focus {
-      box-shadow: none;
-    }
-    #login-box .controls input:first-child {
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
-    }
-    #login-box .controls input:last-child {
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 2px;
-    }
-    #login-box button.btn-custom {
-      width: 25%;
-      margin: auto;
-      justify-content: center;
-      border-radius: 50px;
-      margin-top: 15px;
-      background: green;
-      border-color: rgba(48, 46, 45, 1);
-      color: white;
-    }
-    #login-box button.btn-custom:hover {
-      -webkit-transition: all 500ms ease;
-      -moz-transition: all 500ms ease;
-      -ms-transition: all 500ms ease;
-      -o-transition: all 500ms ease;
-      transition: all 500ms ease;
-      background: rgba(48, 46, 45, 1);
-      border-color: green;
-    }
-    #particles-js {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: 50% 50%;
-      position: fixed;
-      top: 0px;
-      z-index: 1;
-    }
-  </style>
 
-  <body>
-    <form action="/RegAdm" method="post">
-      <div class="container">
-        <div id="login-box">
-          <div><a href="LogAdm">Kembali</a></div>
-          <div class="logo">
-            <img
-              src="Logo.jpg"
-              width="300"
-              class="img img-responsive img-circle center-block"
-            />
-            <h1 class="logo-caption" style="color: white">Register</h1>
-          </div>
-          <div class="controls">
-            <label for="Nama" style="font-size: 18px; color: white"
-              ><b>Nama</b></label
-            >
-            <input
-              type="text"
-              name="username"
-              placeholder="Nama"
-              class="form-control"
-              required
-            />
-            <br />
-            <label for="Password" style="font-size: 18px; color: white"
-              ><b>Password</b></label
-            >
-            <input
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Enter Password"
-              class="form-control"
-              required
-            />
-            <button type="submit" class="btn btn-default btn-block btn-custom">
-              Daftar
-            </button>
-          </div>
-        </div>
-      </div>
-      <div id="particles-js"></div>
-    </form>
-  </body>
+    footer {
+        height: 10vh;
+        background-color: #ffffff;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        max-width: 1000px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .colm-logo {
+        flex: 0 0 50%;
+        text-align: center;
+    }
+
+    .colm-form {
+        flex: 0 0 40%;
+        text-align: center;
+    }
+
+    .colm-logo h2 {
+        font: 26px;
+        font-weight: 400;
+        padding: 0 30px;
+        line-height: 32px;
+    }
+
+    .colm-form .form-container {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        padding: 20px;
+        max-width: 400px;
+    }
+
+    .colm-form .form-container input, .colm-form .form-container .btn-login {
+        width: 100%;
+        margin: 5px 0;
+        height: 45px;
+        vertical-align: middle;
+        font-size: 16px;
+    }
+
+    .colm-form .form-container input {
+        border: 1px solid #dddfe2;
+        color: #1d2129;
+        padding: 0 8px;
+        outline: none;
+    }
+
+    .colm-form .form-container input:focus {
+        border-color: #1877f2;
+        box-shadow: 0 0 0 2px #e7f3ff;
+    }
+
+    .colm-form .form-container .btn-login {
+        background-color: #1877f2;
+        border: none;
+        border-radius: 6px;
+        font-size: 20px;
+        padding: 0 16px;
+        color: #ffffff;
+        font-weight: 700;
+    }
+
+    .colm-form .form-container a {
+        display: block;
+        color: #1877f2;
+        font-size: 14px;
+        text-decoration: none;
+        padding: 10px 0 20px;
+        border-bottom: 1px solid #dadde1;
+    }
+
+    .colm-form .form-container a:hover {
+        text-decoration: underline;
+    }
+
+    .colm-form .form-container .btn-new {
+        background-color: #42b72a;
+        border: none;
+        border-radius: 6px;
+        font-size: 20px;
+        line-height: 50px;
+        padding: 0 16px;
+        color: #ffffff;
+        font-weight: 700;
+        margin-top: 20px; 
+    }
+
+    .colm-form p {
+        font-size: 14px;
+    }
+
+    .colm-form p a {
+        text-decoration: none;
+        color: #1c1e21;
+        font-weight: 600;
+    }
+
+    .colm-form p a:hover {
+        text-decoration: underline;
+    }
+
+    .footer-contents {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    footer ol {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        padding: 10px 0;
+    }
+
+    footer ol:first-child {
+        border-bottom: 1px solid #dddfe2;
+    }
+            
+    footer ol:first-child li:last-child button {
+        background-color: #f5f6f7;
+        border: 1px solid #ccd0d5;
+        outline: none;
+        color: #4b4f56;
+        padding: 0 8px;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    footer ol li {
+        padding-right: 15px;
+        font-size: 12px;
+        color: #385898;
+    }
+
+    footer ol li a {
+        text-decoration: none;
+        color: #385898;
+    }
+
+    footer ol li a:hover {
+        text-decoration: underline;
+    }
+
+    footer small {
+        font-size: 11px;
+    }
+</style>
+
+<body>
+    <main>
+        <form action="/RegAdm" method="post" >
+            <div class="controls">
+                <div class="row">
+                    <div class="colm-logo">
+                        <img src="Logo.jpg"  width="300">
+                        <h1>Aplikasi Prediksi dan Rekomendasi Nilai Mahasiswa</h1>                
+                    </div>
+                    <div class="colm-form">
+                        <div class="form-container">
+                            <input id="username" type="text" name="username" placeholder="Nama Admin" class="form-control" required>
+                            <input id="password" type="password" name="password" placeholder="Password" class="form-control" required>
+                            <button type="submit" class="btn-new">Daftar</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
 </html>

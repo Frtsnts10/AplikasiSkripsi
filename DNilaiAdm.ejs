@@ -54,9 +54,6 @@
     <h1 class="w3-margin" style="color: black; font-weight: bolder;";">Daftar Nilai Mahasiswa</h1>
   </header>
 
-  <span id="mhs" hidden><%= JSON.stringify(datalist) %></span>
-  <span id="unamemhs" hidden><%= JSON.stringify(currentUser.username) %></span>
-  
   <button><a href="IndexMhs">Kembali</a></button>
     <div class="List" style="padding-top: 50px;">
       <table>
@@ -73,37 +70,19 @@
           <th>Machine Learning</th>
           <th>Mobile Development</th>
           <th>Aljabar Linier</th>
-          <th>Rekomendasi</th>
+          <th>Hasil</th>
         </tr>
         
-        
+        <% for(var a=0; a<datalist.length;a++) { %>
         <tr>
-          <td><%= currentUser.username %></td>
-
-          <% for(var a=0; a < datalist.length;a++) { %>
-            <% if(datalist[a].name == currentUser.username){ %>
+          <td><%= datalist[a].name %></td>
           <td><%= datalist[a].nim %></td>
-
           <% for(var b=0; b < datalist[a].matkul.length; b++) { %>
             <td><%= datalist[a].matkul[b].nilai %></td>
           <% } %>
           <td><%= datalist[a].rekomendasi%></td>
-          <% } %>
-          <% } %>
         </tr>
- 
-
-<!-- 
-        <% for(var a=0; a < datalist.length;a++) { %>
-          <tr>
-            <td><%= currentUser.username %></td>
-            <td><%= datalist[a].nim %></td>
-            <% for(var b=0; b < datalist[a].matkul.length; b++) { %>
-              <td><%= datalist[a].matkul[b].nilai %></td>
-            <% } %>
-            <td><%= datalist[a].rekomendasi%></td>
-          </tr>
-          <% } %> -->
+        <% } %>
       </table>
       </div>
 
@@ -114,14 +93,4 @@
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
     </footer>
 </body>
-
-<script>
-  var unamemhs = JSON.parse($('#unamemhs').text());
-  $('#unamemhs').remove();
-  console.log(unamemhs)
-
-  var unamemhs = JSON.parse($('#unamemhs').text());
-  $('#unamemhs').remove();
-  console.log(unamemhs)
-</script>
 </html>

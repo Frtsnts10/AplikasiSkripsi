@@ -114,90 +114,211 @@
 <body>
     
     <!-- Header -->
-    <header class="w3-container w3-center" style="padding:10px 16px; background-image: url(untar.jpg); background-size: cover; display: flex;">
+    <header class="w3-container w3-center" style="padding:30px 16px; background-image: url(untar.jpg); background-size: cover; display: flex;">
         <img src="Logo.jpg"  width="250">
         <h1 class="w3-margin" style="color: white; font-weight: bolder; margin: auto;";">Aplikasi Prediksi Nilai dan Rekomendasi Mata Kuliah Universitas Tarumanagara</h1>
     </header>
 
-    <p align="right" style="padding-right: 20px;">
-        <button onclick="window.print()">Print</button>
-    </p>
 
-    <br><br><br>
-    <div>
-        <h1 style="justify-content: center; margin: auto; text-align: center;">Nilai Saya</h1>
-    </div>
-    
-    <table>
-        <tr>
-          <th>Nama</th>
-          <th>NIM</th>
-          <th>Algoritma I</th>
-          <th>PBO </th>
-          <th>Kalkulus I</th>
-          <th>Citra</th>
-          <th>Statistik</th>
-          <th>Data Mining</th>
-          <th>Game Development</th>
-          <th>Machine Learning</th>
-          <th>Mobile Development</th>
-          <th>Aljabar Linier</th>
-        </tr>
-        
-        
-        <tr>
-          <td><%= currentUser.username %></td>
-
-          <% for(var a=0; a < datalist.length;a++) { %>
-            <% if(datalist[a].name == currentUser.username){ %>
-          <td><%= datalist[a].nim %></td>
-
-          <% for(var b=0; b < datalist[a].matkul.length; b++) { %>
-            <td><%= datalist[a].matkul[b].nilai %></td>
-          <% } %>
-          <% } %>
-          <% } %>
-        </tr>
-    </table>
-
-    <br><br><br>
+    <button><a href="IndexMhs">Kembali</a></button>
     <div style="justify-content: center; text-align: center;">
-        <h1>Hasil Rekomendasi Nilai</h1>
+        <h1>Cek Hasil Rekomendasi Nilai</h1>
+        <h4>Nantinya Nilai akan ditampilkan pada halaman selanjutnya.</h4>
+        <br>
     </div>
-    <table id="" style="">
-        <tr>
-            <th>Nilai Rata-rata</th>
-            <th>Hasil Nilai</th>
-            <th>Prediksi</th>
-            <th>Hasil: Rekomendasi?</th>
-            <th>Matakuliah Rekomendasi</th>
-            <th>Akurasi</th>
-        </tr>
-        
-        <tr>
-            
-            <td id="meannilai"></td>
-            <td id= "hasil" ></td>
-            <td id="rekomendasi"></td>
-            <td></td>
-            <td id="rek"> </td>
-            <td></td>
-        </tr>
 
-    </table>
+    
+    <div style="justify-content: center; text-align: center; margin: auto;">
+        <label for="selection1">Nama Mahasiswa</label>
+        <select name="selection1" id="showlist" onchange="muncul(event)">
+            <option value="">--Select--</option>
+
+            <% for(var a=0; a<datalist.length;a++) { %>
+            <option value=<%= a %> ><%= datalist[a].name %></option>
+            <% } %>
+        </select>
+
+        <br><br>
+        <button id="" onclick="window.location='/print'">Calculate</button>
+    </div>
 
     <br><br>
-    <center>
-        <button style="margin: auto; justify-content: center;"><a href="IndexMhs">Kembali</a></button>
-    </center>
-    
-   
-    <span id="mhs" hidden><%= JSON.stringify(datalist) %></span>
-    <span id="unamemhs" hidden><%= JSON.stringify(currentUser.username) %></span>
-    
-    
-    <script>
+    <div>
+        
+    </div>
 
+
+    <!-- Set Nama Mahasiswa Pilihan yang ditampilkan -->
+    <script>
+        function muncul(event){
+            var selectElement = event.target;
+                var value = selectElement.value;
+                var b = "";
+                for(var a=0; a < 26; a++){
+                    if(a == 0){
+                        b = "A";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 1){
+                        b = "B";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 2){
+                        b = "C";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 3){
+                        b = "D";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 4){
+                        b = "E";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 5){
+                        b = "F";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 6){
+                        b = "G";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 7){
+                        b = "H";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 8){
+                        b = "I";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 9){
+                        b = "J";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 10){
+                        b = "K";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 11){
+                        b = "L";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 12){
+                        b = "M";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 13){
+                        b = "N";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 14){
+                        b = "O";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 15){
+                        b = "P";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 16){
+                        b = "Q";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 17){
+                        b = "R";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 18){
+                        b = "S";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    }
+                    if(a == 19){
+                        b = "T";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    } 
+                    if(a == 20){
+                        b = "U";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    } 
+                    if(a == 21){
+                        b = "V";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    } 
+                    if(a == 22){
+                        b = "W";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    } 
+                    if(a == 23){
+                        b = "X";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    } 
+                    if(a == 24){
+                        b = "Y";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    } 
+                    if(a == 25){
+                        b = "Z";
+                        if (value == a){
+                            var index="Mhs" + b;
+                        } 
+                    } 
+                } 
+            window.localStorage.setItem("pilihan", index);     
+        }
+        
+    </script>
+    
+    <!-- Mean Nilai / Nilai Rata Mhs -->
+    <script>
         var a = [
             {
                 name: 'MhsA',
@@ -354,84 +475,37 @@
         var hasilnilai = [];
         var matkulrek = [];
         for(e = 0; e < 26 ; e++){
-            if(meanMK1[e] > 80 && meanMK1[e] <= 100){
-                rekomendasi[e] = true;
-                hasilnilai[e] = "S Baik";
-                matkulrek[e] = "Algoritma II"
+            if(rekomendasi[e] = true){
+                if(meanMK1[e] > 80 && meanMK1[e] <= 100){
+                    hasilnilai[e] = "S Baik";
+                    matkulrek[e] = "Algoritma II"
+                }
+                else if(meanMK1[e] > 70 && meanMK1[e] <= 79){
+                    hasilnilai[e] = "Baik";
+                    matkulrek[e] = "PBO II"
+                }
+                else if(meanMK1[e] > 56 && meanMK1[e] <= 69){
+                    hasilnilai[e]= "Cukup";
+                    matkulrek[e] = "Kalkulus Lanjut"
+                }
             }
-            else if(meanMK1[e] > 70 && meanMK1[e] <= 79){
-                rekomendasi[e] = true;
-                hasilnilai[e] = "Baik";
-                matkulrek[e] = "PBO II"
-            }
-            else if(meanMK1[e] > 56 && meanMK1[e] <= 69){
-                rekomendasi[e] = true;
-                hasilnilai[e]= "Cukup";
-                matkulrek[e] = "Kalkulus Lanjut"
-            }
-            else if(meanMK1[e] > 45 && meanMK1[e] <= 55){
-                rekomendasi[e] = false;
-                hasilnilai[e]= "Kurang";
-                matkulrek[e] = "Game Design"
-            }
-            else{
-                rekomendasi[e] = false;
+            else if (rekomendasi[e] = false){
+                if(meanMK1[e] > 45 && meanMK1[e] <= 55){
+                    hasilnilai[e]= "Kurang";
+                    matkulrek[e] = "Game Design"
+                }
+                else{
                 hasilnilai[e]= "S Kurang";
                 matkulrek[e] = "--"
+                }
             }
-            
-            if(hasilnilai[e]==null){
-                hasilnilai[e] = "S.Kurang"
-            }
-            if(matkulrek[e]==null){
-                matkulrek[e] = "--"    
-            }
-            
         }
-        
         window.localStorage.setItem("hasilmhs", JSON.stringify(hasilnilai));
         // console.log(hasilnilai)
         window.localStorage.setItem("rek", JSON.stringify(matkulrek));
         // console.log(matkulrek)
-    
-    var mhs = JSON.parse($('#mhs').text());
-    $('#mhs').remove();
-    // console.log(uname)
-
-    var unamemhs = JSON.parse($('#unamemhs').text());
-    $('#unamemhs').remove();
-    // console.log(unamemhs)
-
-    //    Nampilin Nama Sesuai yang dipilih
-    var muncul = window.localStorage.getItem("pilihan");
-    // console.log(muncul)
-    
-    // Nampilin Nilai Rata
-    var nilairatamhs = window.localStorage.getItem("meannilai");
-    nilairatamhs = (nilairatamhs) ? JSON.parse(nilairatamhs) : [];
-    var hasilnilai = window.localStorage.getItem("hasilmhs");
-    hasilnilai = (hasilnilai) ? JSON.parse(hasilnilai) : [];
-    var rekmatkul = window.localStorage.getItem("rek");
-    rekmatkul = (rekmatkul) ? JSON.parse(rekmatkul) : [];
-    
-    // console.log(nilairatamhs)
-    
-    for(var a = 0; a < mhs.length; a++){
-        if(mhs[a].name == unamemhs){
-            
-            document.getElementById("rekomendasi").innerHTML = mhs[a].rekomendasi;
-            // console.log(mhs[a].name)
-            document.getElementById("meannilai").innerHTML = nilairatamhs[a];
-            document.getElementById("hasil").innerHTML = hasilnilai[a];
-            document.getElementById("rek").innerHTML = rekmatkul[a];
-        }     
-    }
-    // console.log(hasilnilai)
-    // console.log(rekmatkul)
-
-        
     </script>
-    
+
     <div class="node1">
             
         <%  var total=datalist.length; %>
@@ -1006,10 +1080,10 @@
                             <% } %>
 
                             <% data1[j].matkul[c1].total=data1[j].matkul[c1].total+1; %>
-                            <% if (datalist[b].rekomendasi== true ){ %>
+                            <% if (datalist[b].rekomendasi=="true"){ %>
                                 <% data1[j].matkul[c1].Rekomendasi=data1[j].matkul[c1].Rekomendasi+1; %>
                             <% } %>
-                            <% if (datalist[b].rekomendasi== false){ %>
+                            <% if (datalist[b].rekomendasi=="false"){ %>
                                 <% data1[j].matkul[c1].AmbilMKLain=data1[j].matkul[c1].AmbilMKLain+1; %>
                             <% } %>
                         <% } %>
@@ -1037,14 +1111,12 @@
             
             <!-- final --2 -->
 
-            
             <% } %>
     </div>
-
     <!-- <h1><%= JSON.stringify(data) %></h1> -->
 
     <br><br>
-    <!-- <h1><%= JSON.stringify(data1) %></h1> -->
+    <!-- <h1><%= JSON.stringify(data) %></h1> -->
     <br>
     <!-- ConsoleLog. (1) -->
     <!-- <h1><%= total %></h1>
@@ -1066,5 +1138,6 @@
     
 
     <br>
-</body>   
+   
+    
 </html>
