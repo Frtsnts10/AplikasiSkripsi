@@ -121,7 +121,7 @@ for (var c = 0; c < a.length; c++){
     }
 }
 
-console.log(total)
+// console.log(total)
 
 for(var x = 0; x < total.length; x++ ){
     for( var z = 0; z < a[x].Nilai.length; z++){
@@ -129,24 +129,28 @@ for(var x = 0; x < total.length; x++ ){
     }
 }
 
-console.log(meanMK1)
+
+// console.log(meanMK1)
 
 for(var x = 0; x < total.length; x++ ){
     for( var z = 0; z < a[x].Nilai.length; z++){
-        t[x].Nilai[z] =  a[x].Nilai[z] - meanMK1[x]
+        t[x].Nilai[z] =  a[x].Nilai[z] - meanMK1[x]   
+    }
+
+}
+
+// console.log(t)
+
+
+for(var j = 0; j < a[0].Nilai.length; j++){
+    for(var x = 0; x < a[0].Nilai.length; x++){
+        hasilx[j] = (t[0].Nilai[j] * t[1].Nilai[j])
+    
+        // hasil1[j] = (Math.sqrt(t[0].Nilai[j]*2))
+        // hasil2[j] = (Math.sqrt(t[1].Nilai[j]*2))
     }
 }
 
-console.log(t)
-
-for(var z = 0; z < total.length; z++ ){
-    for( var j = 0; j < a[0].Nilai.length; j++){
-        hasilx[j] = (t[0].Nilai[j] * t[z].Nilai[j])
-        hasil1[j] = (Math.sqrt(t[0].Nilai[j]*2))
-        hasil2[j] = (Math.sqrt(t[z].Nilai[j]*2))
-
-    }
-}
 
 console.log(hasilx)
 console.log(hasil1)
@@ -159,5 +163,22 @@ for(var o = 0; o < total.length; o++ ){
     }
 }
 
-console.log(sim)
+// console.log(sim)
 
+var x = 65 - 70
+Math.ceil(x)
+var y = 41 - 62
+Math.ceil(y)
+
+console.log(x)
+console.log(y)
+let totaltestx = x * y;
+let totaltest1 = x^2;
+let totaltest2 = y^2;
+let totaltesty = Math.ceil(Math.sqrt(x)*Math.sqrt(y));
+let totaltestakhir = Math.ceil(totaltestx/totaltesty);
+console.log(totaltestx)
+console.log(totaltest1)
+console.log(totaltest2)
+console.log(totaltesty)
+console.log(totaltestakhir)

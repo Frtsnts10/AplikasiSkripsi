@@ -83,7 +83,7 @@
         text-align: center;
         justify-content: center;
         border: 1px solid black;
-        width: 70%;
+        width: 60%;
         border-spacing: 30px;
         border-collapse:collapse;
         }
@@ -114,9 +114,9 @@
 <body>
     
     <!-- Header -->
-    <header class="w3-container w3-center" style="padding:10px 16px; background-image: url(untar.jpg); background-size: cover; display: flex;">
+    <header class="w3-container w3-center" style="padding:10px 16px; background-image: url(untar.jpg); background-size: cover; display: flex; justify-content: center; text-align: center; margin: auto;">
         <img src="Logo.jpg"  width="250">
-        <h1 class="w3-margin" style="color: white; font-weight: bolder; margin: auto;";">Aplikasi Prediksi Nilai dan Rekomendasi Mata Kuliah Universitas Tarumanagara</h1>
+        <h1 class="w3-margin" style="color: white; font-weight: bolder; margin: auto;justify-content: center;text-align: center;";">Aplikasi Prediksi Nilai dan Rekomendasi Mata Kuliah Universitas Tarumanagara</h1>
     </header>
 
     <p align="right" style="padding-right: 20px;">
@@ -146,17 +146,16 @@
         
         
         <tr>
-          <td><%= currentUser.username %></td>
+            <td><%= currentUser.username %></td>
 
-          <% for(var a=0; a < datalist.length;a++) { %>
+            <% for(var a=0; a < datalist.length;a++) { %>
             <% if(datalist[a].name == currentUser.username){ %>
-          <td><%= datalist[a].nim %></td>
-
-          <% for(var b=0; b < datalist[a].matkul.length; b++) { %>
-            <td><%= datalist[a].matkul[b].nilai %></td>
-          <% } %>
-          <% } %>
-          <% } %>
+            <td><%= datalist[a].nim %></td>
+            <% for(var b=0; b < datalist[a].matkul.length; b++) { %>
+                <td><%= datalist[a].matkul[b].nilai %></td>
+            <% } %>
+            <% } %>
+            <% } %>
         </tr>
     </table>
 
@@ -175,11 +174,10 @@
         </tr>
         
         <tr>
-            
             <td id="meannilai"></td>
             <td id= "hasil" ></td>
-            <td id="rekomendasi"></td>
-            <td></td>
+            <td id="prediksi"></td>
+            <td id="hrek"></td>
             <td id="rek"> </td>
             <td></td>
         </tr>
@@ -196,241 +194,7 @@
     <span id="unamemhs" hidden><%= JSON.stringify(currentUser.username) %></span>
     
     
-    <script>
-
-        var a = [
-            {
-                name: 'MhsA',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [65, 80, 60, 65, 100, 75, 62, 42, 100, 87]
-            }, 
-            {
-                name: 'MhsB',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [41, 45, 65, 42, 45, 41, 52, 33, 35, 37]
-            },
-            {
-                name: 'MhsC',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [95, 99, 42, 86, 62, 85, 43, 85, 95, 82]
-            },
-            {
-                name: 'MhsD',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [49, 55, 75, 0, 82, 65, 79, 46, 41, 55]
-            },
-            {
-                name: 'MhsE',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [63, 52, 57, 85, 54, 77, 64, 60, 56, 52]
-            },
-            {
-                name: 'MhsF',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [45, 48, 60, 48, 43, 43, 85, 99, 37, 34]
-            },
-            {
-                name: 'MhsG',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [88, 65, 25, 75, 41, 65, 21, 88, 84, 45]
-            },
-            {
-                name: 'MhsH',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [84, 81, 62, 81, 79, 87, 56, 76, 36, 39]
-            },
-            {
-                name: 'MhsI',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [42, 48, 81, 40, 55, 20, 81, 42, 40, 47]
-            },
-            {
-                name: 'MhsJ',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [45, 84, 70, 15, 88, 55, 80, 15, 67, 100]
-            },
-            {
-                name: 'MhsK',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [58, 100, 69, 75, 71, 61, 96, 59, 66, 82]
-            },
-            {
-                name: 'MhsL',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [30, 55, 59, 49, 96, 59, 58, 42, 40, 59]
-            },
-            {
-                name: 'MhsM',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [63, 86, 84, 61, 13, 88, 87, 57, 52, 43]
-            },
-            {
-                name: 'MhsN',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [33, 66, 54, 45, 94, 67, 37, 35, 48, 62]
-            },
-            {
-                name: 'MhsO',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [66, 98, 87, 66, 54, 53, 81, 80, 25, 89]
-            },
-            {
-                name: 'MhsP',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [56, 54, 39, 58, 99, 64, 34, 26, 58, 55]
-            },
-            {
-                name: 'MhsQ',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [93, 68, 71, 87, 47, 52, 59, 82, 88, 59]
-            },
-            {
-                name: 'MhsR',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [47, 60, 87, 28, 94, 72, 81, 43, 45, 60]
-            },
-            {
-                name: 'MhsS',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [43, 41, 66, 44, 62, 35, 53, 38, 39, 44]
-            },
-            {
-                name: 'MhsT',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [82, 84, 81, 88, 77, 99, 97, 93, 86, 83]
-            },
-            {
-                name: 'MhsU',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [80, 52, 73, 50, 79, 70, 66, 70, 70, 70]
-            },
-            {
-                name: 'MhsV',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [42, 89, 85, 77, 74, 75, 58, 67, 73, 91]
-            },
-            {
-                name: 'MhsW',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [72, 84, 58, 83, 72, 78, 76, 78, 80, 75]
-            },
-            {
-                name: 'MhsX',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [73, 88, 78, 0, 88, 73, 86, 72, 73, 91]
-            },
-            {
-                name: 'MhsY',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [66, 45, 85, 83, 79, 0, 65, 78, 72, 56]
-            },
-            {
-                name: 'MhsZ',
-                Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-                Nilai: [0, 55, 80, 81, 79, 70, 84, 80, 81, 92]
-            },
-        ]
-
-
-        var meanMK1     = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-        var total       = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
-        for (var c = 0; c < a.length; c++){
-            for (var b = 0; b < a[c].Nilai.length; b++){
-            total[c] +=  a[c].Nilai[b]
-            }
-        }
-      
-        for(var x = 0; x < total.length; x++ ){
-            for( var z = 0; z < a[x].Nilai.length; z++){
-                meanMK1[x] = total[x] / a[x].Nilai.length;
-            }
-        }
-
-        console.log(meanMK1)
-        window.localStorage.setItem("meannilai", JSON.stringify(meanMK1));
-        
-        // Nampilin Hasil dan Matakuliah Rekomendasi
-        var hasilnilai = [];
-        var matkulrek = [];
-        for(e = 0; e < 26 ; e++){
-            if(meanMK1[e] > 80 && meanMK1[e] <= 100){
-                rekomendasi[e] = true;
-                hasilnilai[e] = "S Baik";
-                matkulrek[e] = "Algoritma II"
-            }
-            else if(meanMK1[e] > 70 && meanMK1[e] <= 79){
-                rekomendasi[e] = true;
-                hasilnilai[e] = "Baik";
-                matkulrek[e] = "PBO II"
-            }
-            else if(meanMK1[e] > 56 && meanMK1[e] <= 69){
-                rekomendasi[e] = true;
-                hasilnilai[e]= "Cukup";
-                matkulrek[e] = "Kalkulus Lanjut"
-            }
-            else if(meanMK1[e] > 45 && meanMK1[e] <= 55){
-                rekomendasi[e] = false;
-                hasilnilai[e]= "Kurang";
-                matkulrek[e] = "Game Design"
-            }
-            else{
-                rekomendasi[e] = false;
-                hasilnilai[e]= "S Kurang";
-                matkulrek[e] = "--"
-            }
-            
-            if(hasilnilai[e]==null){
-                hasilnilai[e] = "S.Kurang"
-            }
-            if(matkulrek[e]==null){
-                matkulrek[e] = "--"    
-            }
-            
-        }
-        
-        window.localStorage.setItem("hasilmhs", JSON.stringify(hasilnilai));
-        // console.log(hasilnilai)
-        window.localStorage.setItem("rek", JSON.stringify(matkulrek));
-        // console.log(matkulrek)
     
-    var mhs = JSON.parse($('#mhs').text());
-    $('#mhs').remove();
-    // console.log(uname)
-
-    var unamemhs = JSON.parse($('#unamemhs').text());
-    $('#unamemhs').remove();
-    // console.log(unamemhs)
-
-    //    Nampilin Nama Sesuai yang dipilih
-    var muncul = window.localStorage.getItem("pilihan");
-    // console.log(muncul)
-    
-    // Nampilin Nilai Rata
-    var nilairatamhs = window.localStorage.getItem("meannilai");
-    nilairatamhs = (nilairatamhs) ? JSON.parse(nilairatamhs) : [];
-    var hasilnilai = window.localStorage.getItem("hasilmhs");
-    hasilnilai = (hasilnilai) ? JSON.parse(hasilnilai) : [];
-    var rekmatkul = window.localStorage.getItem("rek");
-    rekmatkul = (rekmatkul) ? JSON.parse(rekmatkul) : [];
-    
-    // console.log(nilairatamhs)
-    
-    for(var a = 0; a < mhs.length; a++){
-        if(mhs[a].name == unamemhs){
-            
-            document.getElementById("rekomendasi").innerHTML = mhs[a].rekomendasi;
-            // console.log(mhs[a].name)
-            document.getElementById("meannilai").innerHTML = nilairatamhs[a];
-            document.getElementById("hasil").innerHTML = hasilnilai[a];
-            document.getElementById("rek").innerHTML = rekmatkul[a];
-        }     
-    }
-    // console.log(hasilnilai)
-    // console.log(rekmatkul)
-
-        
-    </script>
     
     <div class="node1">
             
@@ -701,7 +465,7 @@
         <!-- 2 -->
         <% var matkul=[]; %>
         <% var max1=0; %>
-        <% var matkuawalx=""; %>
+        <% var matkulawal1=""; %>
         <% var hasil1=""; %>
         
         <% for(var l=0; l < Gain.length; l++){%>
@@ -774,7 +538,7 @@
         <% for(var e=0;e<Gain.length;e++){ %>
             <% if (Gain[e]>=max1){ %>
                 <% max1=Gain[e]; %>
-                <% matkuawalx = matkul[e]%>
+                <% matkulawal1 = matkul[e]%>
                 <% var p1 = e%>
                 <% hasil1 = "S Baik"; %>  
             <% } %>
@@ -782,7 +546,7 @@
 
         <% matkul.splice(p1,1)%>
         <!-- <h1><%= matkulawal %></h1>
-        <h1><%= matkuawalx %></h1> -->
+        <h1><%= matkulawal1 %></h1> -->
 
         <% var kl=[]; %>
         <% var kn=[]; %>
@@ -794,7 +558,7 @@
 
         <% for (var k = 0; k < total; k++){ %>
             <% for (var i = 0; i < datalist[k].matkul.length; i++){ %>
-                <% if (datalist[k].matkul[i].nama_matakuliah==matkuawalx){ %>
+                <% if (datalist[k].matkul[i].nama_matakuliah==matkulawal1){ %>
                     <% if (datalist[k].matkul[i].hasil==hasil1) { %>
                         <% total1 = total1+1;%>
 
@@ -1042,10 +806,11 @@
     </div>
 
     <!-- <h1><%= JSON.stringify(data) %></h1> -->
-
     <br><br>
     <!-- <h1><%= JSON.stringify(data1) %></h1> -->
     <br>
+
+
     <!-- ConsoleLog. (1) -->
     <!-- <h1><%= total %></h1>
     <h1><%= maxentropy1 %></h1>
@@ -1060,11 +825,255 @@
     <h1><%= TotalRekomendasi1 %></h1>
     <h1><%= TotalAmbilMKLain1 %></h1>           
     <h1><%= matkulawal1 %></h1>
-    <h1><%= Gain1 %></h1> -->
-    <br><br>       
-    <!-- <h1><%= Gain %></h1> -->
-    
+    <h1><%= Gain1 %></h1>
+    <br><br> -->
+</body>
 
-    <br>
-</body>   
+<script>
+
+    var a = [
+        {
+            name: 'MhsA',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [65, 80, 60, 65, 100, 75, 62, 42, 100, 87]
+        }, 
+        {
+            name: 'MhsB',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [41, 45, 65, 42, 45, 41, 52, 33, 35, 37]
+        },
+        {
+            name: 'MhsC',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [95, 99, 42, 86, 62, 85, 43, 85, 95, 82]
+        },
+        {
+            name: 'MhsD',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [49, 55, 75, 0, 82, 65, 79, 46, 41, 55]
+        },
+        {
+            name: 'MhsE',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [63, 52, 57, 85, 54, 77, 64, 60, 56, 52]
+        },
+        {
+            name: 'MhsF',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [45, 48, 60, 48, 43, 43, 85, 99, 37, 34]
+        },
+        {
+            name: 'MhsG',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [88, 65, 25, 75, 41, 65, 21, 88, 84, 45]
+        },
+        {
+            name: 'MhsH',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [84, 81, 62, 81, 79, 87, 56, 76, 36, 39]
+        },
+        {
+            name: 'MhsI',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [42, 48, 81, 40, 55, 20, 81, 42, 40, 47]
+        },
+        {
+            name: 'MhsJ',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [45, 84, 70, 15, 88, 55, 80, 15, 67, 100]
+        },
+        {
+            name: 'MhsK',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [58, 100, 69, 75, 71, 61, 96, 59, 66, 82]
+        },
+        {
+            name: 'MhsL',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [30, 55, 59, 49, 96, 59, 58, 42, 40, 59]
+        },
+        {
+            name: 'MhsM',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [63, 86, 84, 61, 13, 88, 87, 57, 52, 43]
+        },
+        {
+            name: 'MhsN',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [33, 66, 54, 45, 94, 67, 37, 35, 48, 62]
+        },
+        {
+            name: 'MhsO',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [66, 98, 87, 66, 54, 53, 81, 80, 25, 89]
+        },
+        {
+            name: 'MhsP',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [56, 54, 39, 58, 99, 64, 34, 26, 58, 55]
+        },
+        {
+            name: 'MhsQ',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [93, 68, 71, 87, 47, 52, 59, 82, 88, 59]
+        },
+        {
+            name: 'MhsR',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [47, 60, 87, 28, 94, 72, 81, 43, 45, 60]
+        },
+        {
+            name: 'MhsS',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [43, 41, 66, 44, 62, 35, 53, 38, 39, 44]
+        },
+        {
+            name: 'MhsT',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [82, 84, 81, 88, 77, 99, 97, 93, 86, 83]
+        },
+        {
+            name: 'MhsU',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [80, 52, 73, 50, 79, 70, 66, 70, 70, 70]
+        },
+        {
+            name: 'MhsV',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [42, 89, 85, 77, 74, 75, 58, 67, 73, 91]
+        },
+        {
+            name: 'MhsW',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [72, 84, 58, 83, 72, 78, 76, 78, 80, 75]
+        },
+        {
+            name: 'MhsX',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [73, 88, 78, 0, 88, 73, 86, 72, 73, 91]
+        },
+        {
+            name: 'MhsY',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [66, 45, 85, 83, 79, 0, 65, 78, 72, 56]
+        },
+        {
+            name: 'MhsZ',
+            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
+            Nilai: [0, 55, 80, 81, 79, 70, 84, 80, 81, 92]
+        },
+    ]
+
+
+    var meanMK1     = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    var total       = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+    for (var c = 0; c < a.length; c++){
+        for (var b = 0; b < a[c].Nilai.length; b++){
+        total[c] +=  a[c].Nilai[b]
+        }
+    }
+  
+    for(var x = 0; x < total.length; x++ ){
+        for( var z = 0; z < a[x].Nilai.length; z++){
+            meanMK1[x] = total[x] / a[x].Nilai.length;
+        }
+    }
+
+    console.log(meanMK1)
+    window.localStorage.setItem("meannilai", JSON.stringify(meanMK1));
+    
+    
+</script>
+
+<script>
+    // Nampilin Hasil dan Matakuliah Rekomendasi
+    var hasilnilai = [];
+    var matkulrek = [];
+    var hrek = [];
+    for(e = 0; e < 26 ; e++){
+        if(rekomendasi = true){
+            if(meanMK1[e] > 80 && meanMK1[e] <= 100){
+                hrek[e] = true;
+                hasilnilai[e] = "S Baik";
+                matkulrek[e] = "Algoritma II"
+            }
+            else if(meanMK1[e] > 70 && meanMK1[e] <= 79){
+                hrek[e] = true;
+                hasilnilai[e] = "Baik";
+                matkulrek[e] = "PBO II"
+            }
+            else if(meanMK1[e] > 56 && meanMK1[e] <= 69){
+                hrek[e] = true;
+                hasilnilai[e]= "Cukup";
+                matkulrek[e] = "Kalkulus Lanjut"
+            }
+            else if(meanMK1[e] > 45 && meanMK1[e] <= 55){
+                hrek[e] = false;
+                hasilnilai[e]= "Kurang";
+                matkulrek[e] = "Game Design"
+            }
+            else{
+                hrek[e] = false;
+                hasilnilai[e]= "S Kurang";
+                matkulrek[e] = "--"
+            }
+        }
+        else{
+            if(hasilnilai[e]==null){
+                hasilnilai[e] = "S.Kurang"
+            }
+            if(matkulrek[e]==null){
+                matkulrek[e] = "--"    
+            }
+        }
+        
+    }
+    
+    window.localStorage.setItem("hasilmhs", JSON.stringify(hasilnilai));
+    // console.log(hasilnilai)
+    window.localStorage.setItem("rek", JSON.stringify(matkulrek));
+    // console.log(matkulrek)
+    window.localStorage.setItem("hrek", JSON.stringify(hrek));
+    // console.log(hrek)
+
+    var mhs = JSON.parse($('#mhs').text());
+    $('#mhs').remove();
+    // console.log(uname)
+
+    var unamemhs = JSON.parse($('#unamemhs').text());
+    $('#unamemhs').remove();
+    // console.log(unamemhs)
+
+    //    Nampilin Nama Sesuai yang dipilih
+    var muncul = window.localStorage.getItem("pilihan");
+    // console.log(muncul)
+    
+    // Nampilin Nilai Rata
+    var nilairatamhs = window.localStorage.getItem("meannilai");
+    nilairatamhs = (nilairatamhs) ? JSON.parse(nilairatamhs) : [];
+    var hasilnilai = window.localStorage.getItem("hasilmhs");
+    hasilnilai = (hasilnilai) ? JSON.parse(hasilnilai) : [];
+    var rekmatkul = window.localStorage.getItem("rek");
+    rekmatkul = (rekmatkul) ? JSON.parse(rekmatkul) : [];
+    var hrek = window.localStorage.getItem("hrek");
+    hrek = (hrek) ? JSON.parse(hrek) : [];
+    
+    // console.log(nilairatamhs)
+    
+    for(var a = 0; a < mhs.length; a++){
+        if(mhs[a].name == unamemhs){
+            document.getElementById("prediksi").innerHTML = mhs[a].rekomendasi;
+            // console.log(mhs[a].name)
+            document.getElementById("meannilai").innerHTML = nilairatamhs[a];
+            document.getElementById("hasil").innerHTML = hasilnilai[a];
+            document.getElementById("rek").innerHTML = rekmatkul[a];
+            document.getElementById("hrek").innerHTML = hrek[a];
+        }     
+    }
+    // console.log(hasilnilai)
+    // console.log(rekmatkul)
+
+        
+</script>   
 </html>
