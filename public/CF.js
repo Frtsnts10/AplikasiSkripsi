@@ -253,8 +253,6 @@ var nilaimhs = {
 };
 var hasil1 = {
   A: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  B: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  C: [0, 0, 0, 0, 0, 0, 0, 0, 0],
 };
 
 
@@ -369,14 +367,14 @@ for (var c = 0; c < a.length; c++) {
 console.log(nilaimhs);
 
 // // perkallian antar nilai (a*a, a*b, dst)
-for (var c = 0; c < nilaimhs.M1.length; c++) {
-    hasil1.A = nilaimhs.M1[0] * nilaimhs.M2[0]
-    hasil1.A = nilaimhs.M1[1] * nilaimhs.M2[1]
-    hasil1.A = nilaimhs.M1[2] * nilaimhs.M2[2]
-    hasil1.A = nilaimhs.M1[3] * nilaimhs.M2[3]
-    hasil1.A = nilaimhs.M1[4] * nilaimhs.M2[4]
+for (var c = 0; c < a.length; c++) {
+  for (var b = 0; b < a[c].Kelompok.length; b++) {
+    for (var c = 0; c < a[c].Kelompok[b].MK.length; c++) {
+        hasil1.A[c] = nilaimhs.M1[c] * nilaimhs.M1[c]
+        hasil1.B[c] = nilaimhs.M2[c] * nilaimhs.M2[c]
+    }
+  }
 }
-
 console.log(hasil1)
 // for (var d = 0; d < nilaibaru.K2.length; d++) {
 //     hasil2.K21[d] = (nilaibaru.K2[d] * nilaibaru.K1[d]);
