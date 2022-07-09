@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  </head>
+  <body>
+
+      <h2 class="text-center">Mahasiswa</h2>
+      <div class="row mt-3">
+        <!-- Alert -->
+
+        <div class="col-auto col-lg-12 mt-2"><%- include('table.ejs') %></div>
+      </div>
+
+    <script>
+   
+      $("#dataTable").on("click", ".button-update", function () {
+        let id = $(this).data("id");
+        let nama = $(this).data("nama");
+
+
+        let nim = $(this).data("nim");
+        let Kelompok= $(this).data({});
+
+        let pekerjaan = $(this).data({});
+
+
+        let Golongan = $(this).data("Golongan");
+
+        
+        $("#edit-modal").modal("show");
+        
+        $(".id").val(id);
+        $(".nama").val(nama);
+
+
+        $(".nim").val(nim);
+        $(".Kelompok").val(Kelompok);
+
+
+        $(".pekerjaan").val(pekerjaan);
+
+        $(".Golongan").val(Golongan);
+      });
+    </script>
+  </body>
+  <style>
+    a {
+      color: white;
+    }
+
+    img {
+      border-radius: 4px;
+      padding: 5px;
+      width: 150px;
+      background-color: white;
+
+    }
+
+    i {
+      font-size: 48px
+    }
+
+    ul {
+      margin-right: 5%;
+    }
+
+    body {
+      /* background: rgb(13, 238, 69);  */
+      background: white;
+      /* background-image: url('https://i1.wp.com/www.academicindonesia.com/wp-content/uploads/2019/09/Logo-UNTAR-Universitas-Tarumanagara.jpg?ssl=1');
+            background-repeat: no-repeat;
+            background-attachment:fixed;
+            background-size:contain;
+            background-position: center; */
+
+    }
+
+    h3 {
+      text-align: center;
+      display: flex;
+      list-style-type: none;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 1em;
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 15%;
+      margin-bottom: 15%;
+      font-size: xx-large;
+      /* color: white; */
+    }
+
+    nav {
+      background-color: #650A65;
+    }
+
+    /* form{
+            background: burlywood;
+            } */
+    /* .form-container{
+            border-radius: 30px;
+            padding: 50px;
+            } */
+  </style>
+</html>

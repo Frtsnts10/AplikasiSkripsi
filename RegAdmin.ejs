@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Mahasiswa</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Registrasi Admin</title>
 </head>
 
 <style>
@@ -189,19 +193,19 @@
 
 <body>
     <main>
-        <form action="/LogMhs" method="post" >
-            <div class="row">
-                <div class="colm-logo">
-                    <img src="Logo.jpg"  width="300">
-                    <h1>Aplikasi Prediksi dan Rekomendasi Nilai Mahasiswa</h1>                
-                </div>
-                <div class="colm-form">
-                    <div class="form-container">
-                        <input id="username" name="username" type="text" placeholder="Nama Mahasiswa" class="form-control" required>
-                        <input id="password" name="password" type="password" placeholder="Password" class="form-control" required>
-                        <button type="submit" class="btn-login">Login</button>
-                       
-                        <button class="btn-new" onclick="window.location='/RegMhs'">Daftar Baru</button>
+        <form action="/RegAdmin" method="post" >
+            <div class="controls">
+                <div class="row">
+                    <div class="colm-logo">
+                        <img src="Logo.jpg"  width="300">
+                        <h1>Aplikasi Prediksi dan Rekomendasi Nilai Mahasiswa</h1>                
+                    </div>
+                    <div class="colm-form">
+                        <div class="form-container">
+                            <input id="username" type="text" name="username" placeholder="Nama Admin" class="form-control" required>
+                            <input id="password" type="password" name="password" placeholder="Password" class="form-control" required>
+                            <button type="submit" class="btn-new">Daftar</a></button>
+                        </div>
                     </div>
                 </div>
             </div>

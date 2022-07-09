@@ -1,73 +1,66 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
-var DataAdmin = require("../models/ModelAdm");
-var schemaDataMhs = require("../models/ModelMhs");
+var schemaDataLogin = require("../models/ModelLogin");
 var schemaDaftarMK = require("../models/ModelMK");
-var schemaMahasiswa = require("../models/ModelRek");
+var schemaUsers = require("../models/DataUsers");
 
 router.get("/", function(req, res) {
   res.render("Home");
-});
-
-
-// 
-
-router.get("/RegMhs", function(req, res) {
-  res.render("RegMhs");});
-  router.post("/RegMhs",function (req, res) { 
-    var username = req.body.username;
-    var password = req.body.password; 
-    schemaDataMhs.register(new schemaDataMhs({ username: username }),
-    password,function (err, user) { 
-      if (err) { 
-        console.log(err);
-        return res.render("RegMhs");
-      } passport.authenticate("local")( req, res,function () {
-        res.render("RegMhs");  
-      });  
-    });});
-
-    
-router.get("/LogMhs", function(req, res) {
-  res.render("LogMhs");
-});
-
-router.post("/LogMhs", passport.authenticate("local", 
-{
-  successRedirect: "/IndexMhs",
-}), function(req, res) {
-
-});
-
-
-router.get("/Choose", function(req, res) {
-  res.render("Choose");
 });
 
 router.get("/Home", function(req, res) {
   res.render("Home");
 });
 
-router.get("/IndexAdm", function(req, res) {
-  res.render("IndexAdm");
+router.get("/Register", function(req, res) {
+  res.render("Register");});
+  router.post("/Register",function (req, res) { 
+    var username = req.body.username;
+    var password = req.body.password; 
+    schemaDataLogin.register(new schemaDataLogin({ username: username }),
+    password,function (err, user) { 
+      if (err) { 
+        console.log(err);
+        return res.render("Login");
+      } passport.authenticate("local")( req, res,function () {
+        res.render("Login");  
+      });  
+    });});
 
+router.post("/Login", passport.authenticate("local", 
+  {
+    // successRedirect: "/mahasiswa/"
+    failureRedirect:"/Login"
+    }), function(req, res) {
+
+      if(req.body.username=='Admin'){
+        console.log('Login as Admin')
+        res.redirect('/IndexAdmin')
+
+      }
+      else{
+        console.log('Login As Mhs')
+
+        res.redirect('/IndexMhs')
+      }
 });
 
-router.get("/IndexMhs", function(req, res) {
-  res.render("IndexMhs");
+router.get("/IndexAdmin", function(req, res) {
+  res.render("IndexAdmin");
 });
 
-router.get("/HomeAdm", function(req, res) {
-  res.render("HomeAdm");
+
+router.get("/Login", function(req, res) {
+  res.render("Login");
 });
 
-router.get("/HomeMhs", function(req, res) {
-  res.render("HomeMhs");
-});
-
-router.get("/DKriteria", function(req, res) {
-  res.render("DKriteria");
+router.get("/IndexMhs", (req, res)=>{
+  schemaUsers.find({}, function(err,data) {
+    res.render("IndexMhs",{
+      datalist : data
+    })
+  })
 });
 
 router.get("/DRek", (req, res)=>{
@@ -78,25 +71,16 @@ router.get("/DRek", (req, res)=>{
   })
 });
 
-router.get("/DMatkulAdm", (req, res)=>{
+router.get("/DMatkul", (req, res)=>{
   schemaDaftarMK.find({}, function(err,data) {
-    res.render("DMatkulAdm",{
+    res.render("DMatkul",{
       datalist : data
     })
   })
 });
-
-router.get("/DMatkulMhs", (req, res)=>{
-  schemaDaftarMK.find({}, function(err,data) {
-    res.render("DMatkulMhs",{
-      datalist : data
-    })
-  })
-});
-
 
 router.get("/Rekomendasi", (req, res)=>{
-  schemaMahasiswa.find({}, function(err,data) {
+  schemaUsers.find({}, function(err,data) {
     res.render("Rekomendasi",{
       datalist : data
     })
@@ -104,17 +88,8 @@ router.get("/Rekomendasi", (req, res)=>{
 });
 
 
-router.get("/print", function(req, res) {
-  schemaMahasiswa.find({}, function(err,data) {
-    res.render("print",{
-      datalist : data
-    })
-  })
-});
-
-
 router.get("/DNilaiAdm", (req, res)=>{
-  schemaMahasiswa.find({}, function(err,data) {
+  schemaUsers.find({}, function(err,data) {
     res.render("DNilaiAdm",{
       datalist : data
     })
@@ -122,12 +97,13 @@ router.get("/DNilaiAdm", (req, res)=>{
 });
 
 router.get("/DNilaiMhs", (req, res)=>{
-  schemaMahasiswa.find({}, function(err,data) {
+  schemaUsers.find({}, function(err,data) {
     res.render("DNilaiMhs",{
       datalist : data
     })
   })
 });
+
 
 module.exports = router;
   

@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 
 <style>
@@ -16,7 +21,7 @@
     .fa-anchor,.fa-coffee {font-size:200px}
 
     .chsbutton {
-        width: 30%;
+        width: 20%;
         background-color: #04AA6D;
         border: none;
         border-radius: 10px;
@@ -29,13 +34,19 @@
         font-size: 16px;
         margin: 10px 0px;
         cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
     }
+   
+    .button2:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+    };
 </style>
 
-<body>
+<body style="background-image: url(bg.png); background-size: cover;">
 
 <!-- Header -->
-<header class="w3-container w3-center" style="padding:30px 16px; background-color: white;">
+<header class="w3-container w3-center" style="padding:30px 16px;">
       <img src="Logo.jpg"  width="300">
       <h1 class="w3-margin" style="color: black; font-weight: bolder;";">Aplikasi Prediksi Nilai dan Rekomendasi Mata Kuliah Universitas Tarumanagara</h1>
 </header>
@@ -43,34 +54,1172 @@
 <div class="choice-center">
     <center>
         <br><br>
-        <!-- <div class="text-center">
-            <button class="chsbutton"><a href="DKriteria">Tabel Kriteria</a></button>
-        </div> -->
-        <br>
-        <!-- <div class="text-center">
-            <button class="chsbutton"><a href="DNilaiMhs">Daftar Nilai</a></button>
-        </div> -->
-        <br>
         <div class="text-center">
-            <button class="chsbutton"><a href="DRek">Daftar Rekomendasi MataKuliah</a></button>
-        </div>
-        <br>
-        <!-- <div class="text-center">
-            <button class="chsbutton"><a href="DMatkulMhs">Daftar Matakuliah</a></button>
-        </div>
-        
-        <br> -->
-        <div class="text-center">
-            <button class="chsbutton"><a href="Rekomendasi">Cek Hasil Rekomendasi</a></button>
+            <button class="chsbutton button2"><a href="DNilaiMhs">Nilai Saya</a></button>
         </div>
         <br>
         <div class="text-center">
-            <button class="chsbutton"><a href="Home">Keluar</a></button>
+            <button class="chsbutton button2"><a href="DRek">Daftar MataKuliah</a></button>
+        </div>
+        <br>
+        <div class="text-center">
+            <button class="chsbutton button2"><a href="Rekomendasi">Cek Hasil Rekomendasi</a></button>
+        </div>
+        <br>
+        <div class="text-center">
+            <button class="chsbutton button2"><a href="Home">Keluar</a></button>
         </div>
     </center>
   </div>
 
+<div class="node1"> 
+    <% var total=datalist.length; %>
+    <% var TotalRek=0; %>
+    <% var TotalMK=0; %>
+    <% for (var a=0;a < total; a++){ %>
+        <%  if (datalist[a].Rek==true) { %>
+            <%  TotalRek=TotalRek+1; %>
+        <% } %>
+        <%  if(datalist[a].Rek==false) { %>
+                <%  TotalMK=TotalMK+1; %> 
+        <% } %>
+    <% } %>
+    <% var EntropyTotal=((-TotalMK/total)*Math.log2(TotalMK/total))+((-TotalRek/total)*Math.log2(TotalRek/total)); %>
+    <% var data =[
+        { 
+            matkul : [
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+            ]
+        },
+        { 
+            matkul : [
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+            ]
+        },
+        { 
+            matkul : [
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+            ]
+        },
+        { 
+            matkul : [
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+            ]
+        },
+        { 
+            matkul : [
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+            ]
+        },
+        { 
+            matkul : [
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+            ]
+        },
+        { 
+            matkul : [
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+            ]
+        },
+        { 
+            matkul : [
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+            ]
+        },
+        { 
+            matkul : [
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                    total: 0,Rek:0,MK:0,entropy:0
+                },
+            ]
+        }
+    ]; %>
+    <% var matkulawal = ""; %>
+    <% var c =0; %>
+    <% for (var j=0; j < 9; j++){ %>
+        <% if (j==0){ %>
+            <% matkulawal="DM&DA"; %>
+        <% } %>
+        <% if (j==1){ %>
+            <%  matkulawal="ML"; %>
+        <% } %>
+        <% if (j==2){ %>
+            <%  matkulawal="NLP"; %>
+        <% } %>
+        <% if (j==3){ %>
+            <%  matkulawal="BPR"; %>
+        <% } %>
+        <% if (j==4){ %>
+            <%  matkulawal="ANN"; %>
+        <% } %>
+        <% if (j==5){ %>
+            <%  matkulawal="Comvis"; %>
+        <% } %>
+        <% if (j==6){ %>
+            <%  matkulawal="GameDev"; %>
+        <% } %>
+        <% if (j==7){ %>
+            <%  matkulawal="GameDesign"; %>
+        <% } %>
+        <% if (j==8){ %>
+            <%  matkulawal="Java"; %>
+        <% } %>
+        
+    <% for (var b=0;b<10;b++){ %>
+        <% for (var e=0;e<9;e++){ %>
+            <% if (datalist[b].matkul[e].nama_MK==matkulawal){ %>
+                <% if (datalist[b].matkul[e].hasil=="C"){ %>
+                    <%  c=0; %>
+                <% } %>
+                <% if (datalist[b].matkul[e].hasil=="B"){ %>
+                    <%  c=1; %>
+                <% } %>
+                <% if (datalist[b].matkul[e].hasil=="A"){ %>
+                    <%  c=2; %>
+                <% } %>
+                
+                <% data[j].matkul[c].total=data[j].matkul[c].total+1; %>
+                    <% if (datalist[b].Rek==true){ %>
+                        <% data[j].matkul[c].Rek=data[j].matkul[c].Rek+1; %>
+                    <% } %>
+                    <% if (datalist[b].Rek==false){ %>
+                        <% data[j].matkul[c].MK=data[j].matkul[c].MK+1; %>
+                    <% } %>
+                <% } %>
+            <% } %>
+        <% } %>
+        <% for(var d=0; d < 3; d++){%>
+            <% data[j].matkul[d].entropy=((-data[j].matkul[d].MK/data[j].matkul[d].total)*Math.log2(data[j].matkul[d].MK/data[j].matkul[d].total))+((-data[j].matkul[d].Rek/data[j].matkul[d].total)*Math.log2(data[j].matkul[d].Rek/data[j].matkul[d].total)); %>
+            <% data[j].matkul[d].entropy = isNaN(data[j].matkul[d].entropy) ? 0 : data[j].matkul[d].entropy; %>
 
-  
+        <% } %>
+    <% } %>
+    <% var Gain = []; %>
+    <% for (var g=0; g < 9; g++){ %>
+        <% Gain[g]=(EntropyTotal-(((data[g].matkul[0].total/total)*data[g].matkul[0].entropy)+((data[g].matkul[1].total/total)*data[g].matkul[1].entropy)+((data[g].matkul[2].total/total)*data[g].matkul[2].entropy)));%>
+        <!-- <h1><%= Gain[g] %></h1> -->
+    <% } %>
+    
+    <% var matkul1=[]; %>
+    <% var max=0; %>
+    <% var MK=""; %>
+    <% var mkhasil=""; %>
+    <% for(var l=0; l < Gain.length; l++){%>
+        <% if (l==0){ %>
+            <% matkul1[l]="DM&DA"; %>
+        <% } %>
+        <% if (l==1){ %>
+            <%  matkul1[l]="ML"; %>
+        <% } %>
+        <% if (l==2){ %>
+            <%  matkul1[l]="NLP"; %>
+        <% } %>
+        <% if (l==3){ %>
+            <%  matkul1[l]="BPR"; %>
+        <% } %>
+        <% if (l==4){ %>
+            <%  matkul1[l]="ANN"; %>
+        <% } %>
+        <% if (l==5){ %>
+            <%  matkul1[l]="Comvis"; %>
+        <% } %>
+        <% if (l==6){ %>
+            <%  matkul1[l]="GameDev"; %>
+        <% } %>
+        <% if (l==7){ %>
+            <%  matkul1[l]="GameDesign"; %>
+        <% } %>
+        <% if (l==8){ %>
+            <%  matkul1[l]="Java"; %>
+        <% } %>
+    <% }%>
+    
+    <% var maxentropy=0; %>
+    <% for(var o=0; o < data.length; o++){  %>
+        <% for(var f=0; f < data[o].matkul.length; f++){  %>
+            <% if (data[o].matkul[f].entropy >= maxentropy){ %>
+                <% maxentropy=data[o].matkul[f].entropy; %>
+                <% var v= f; %>
+            <% } %>
+        <% } %>
+    <% } %>
+
+    <% if (v==0){ %>
+        <% mkhasil = "C"; %>
+    <% } %>
+
+    <% if (v==1){ %>
+        <% mkhasil = "B"; %>
+    <% } %>
+
+    <% if (v==2){ %>
+        <% mkhasil = "A"; %>
+    <% } %>
+
+    <% for(var e=0;e<Gain.length;e++){ %>
+        <% if (Gain[e]>=max){ %>
+            <% max=Gain[e]; %>
+            <% MK = matkul1[e]%>
+            <% var p = e%>
+            <% mkhasil = "B"; %>
+        <% } %>
+    <% } %>
+
+    <% matkul1.splice(p,1)%>
+    <!-- <h1><%= matkul1 %></h1> -->
+
+    <!-- end line -->
+
+    <% var kl=[]; %>
+    <% var kn=[]; %>
+
+    
+    <!-- 2 -->
+    <% var total2=0; %>
+    <% var TotalRek2=0; %>
+    <% var TotalMK2=0; %>
+    <% var EntropyTotal2=0; %>
+    <% for (var k=0; k < total; k++){ %>
+        <% for (var i=0; i < datalist[k].matkul.length; i++){ %>
+            <% if (datalist[k].matkul[i].nama_MK == MK){ %>
+                <% if (datalist[k].matkul[i].hasil==mkhasil) { %>
+                    <% total2=total2+1;%>
+
+
+                    <% kl[k]=k; %>
+                    <!-- <h1><%= kl[k]%></h1> -->
+                    
+                    <%  if (datalist[k].Rek==true){ %>
+                        <%  TotalRek2=TotalRek2+1;%>
+                    <% }%>
+                    <%  if(datalist[k].Rek==false){ %>
+                        <%  TotalMK2=TotalMK2+1; %> 
+                    <% } %>
+
+                    <% EntropyTotal2=((-TotalMK2/total2)*Math.log2(TotalMK2/total2))+((-TotalRek2/total2)*Math.log2(TotalRek2/total2)); %>
+                <% } %>
+            <% } %>
+        <% } %>
+    <% } %>
+
+    <% var data2 =[{ 
+        matkul : [{
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            }
+        ]},{ 
+        matkul : [{
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            }
+        ]},{ 
+        matkul : [{
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            }
+        ]},{ 
+        matkul : [{
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            }
+        ]},{ 
+        matkul : [{
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            }
+        ]},{ 
+        matkul : [{
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            }
+        ]},{ 
+        matkul : [{
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            }
+        ]},{ 
+        matkul : [{
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            },
+            {
+            total: 0,Rek:0,MK:0,entropy:0
+            }
+        ]}]; %>
+
+        <% var matkulawal2 = ""; %>
+        <% var c2 =0 ; %>
+        <% for (var j=0; j < 8; j++){ %>
+            <% matkulawal2 = matkul1[j] ; %>
+            <% for (var b=0; b < total; b++){ %>
+                <% if (b == kl[b]) { %> 
+                    <% for (var r=0; r < datalist[b].matkul.length; r++){ %> 
+                        <% if (datalist[b].matkul[r].nama_MK==matkulawal2){ %>
+                            <% if (datalist[b].matkul[r].hasil=="C"){ %>
+                                <%  c2=0; %>
+                            <% } %>
+                            <% if (datalist[b].matkul[r].hasil=="B"){ %>
+                                <%  c2=1; %>
+                            <% } %>
+                            <% if (datalist[b].matkul[r].hasil=="A"){ %>
+                                <%  c2=2; %>
+                            <% } %>
+                            
+                            <% data2[j].matkul[c2].total=data2[j].matkul[c2].total+1; %>
+                            
+                            <% if (datalist[b].Rek==true){ %>
+                                <% data2[j].matkul[c2].Rek=data2[j].matkul[c2].Rek+1; %>
+                            <% } %>
+                            <% if (datalist[b].Rek==false){ %>
+                                <% data2[j].matkul[c2].MK=data2[j].matkul[c2].MK+1; %>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            <% } %>
+            <% for(var n=0; n < 3; n++){%>
+                <% data2[j].matkul[n].entropy=((-data2[j].matkul[n].MK/data2[j].matkul[n].total)*Math.log2(data2[j].matkul[n].MK/data2[j].matkul[n].total))+((-data2[j].matkul[n].Rek/data2[j].matkul[n].total)*Math.log2(data2[j].matkul[n].Rek/data2[j].matkul[n].total)); %>
+                <% data2[j].matkul[n].entropy = isNaN(data2[j].matkul[n].entropy) ? 0 : data2[j].matkul[n].entropy; %>
+                <!-- <h1><%= data2[j].matkul[n].entropy%></h1> -->
+            <% } %>
+    
+
+            <% var Gain2 = []; %>
+            <% for (var t=0; t < 8; t++){ %>
+                <% Gain2[t]=(EntropyTotal2-(((data2[t].matkul[0].total/total2)*data2[t].matkul[0].entropy)+((data2[t].matkul[1].total/total2)*data2[t].matkul[1].entropy)+((data2[t].matkul[2].total/total2)*data2[t].matkul[2].entropy)));%>
+                <!-- <h1><%= Gain2[t]%></h1> -->
+            <% } %> 
+        <% } %> 
+        <!-- <h1><%= JSON.stringify(data2)%></h1> -->
+
+        <% var max2=0; %>
+        <% var MK2=""; %>
+        <% var mkhasil2=""; %>
+        <% var maxentropy2=0; %>
+
+        <% for(var o = 0; o < data2.length; o++){  %>
+            <% for(var f = 0; f < data2[o].matkul.length; f++){  %>
+                <% if (data2[o].matkul[f].entropy>=maxentropy2){ %>
+                    <% maxentropy2=data2[o].matkul[f].entropy; %>
+                    <% var v= f; %>
+                <% } %>
+            <% } %>
+        <% } %>
+
+        <% if (v==0){ %>
+            <% mkhasil2 = "C"; %>
+        <% } %>
+
+        <% if (v==1){ %>
+            <% mkhasil2 = "B"; %>
+        <% } %>
+
+        <% if (v==2){ %>
+            <% mkhasil2 = "A"; %>
+        <% } %>
+
+        <% for(var q=0;q<Gain2.length;q++){ %>
+            <% if (Gain2[q]>max2){ %>
+                <% max2=Gain2[q]; %>
+                <% MK2 = matkul1[q] %>
+                <% var p2 = q %>
+                <% mkhasil2 = "C"; %>
+            <% }%>
+        <% }%>
+
+        <% matkul1.splice(p2,1)%>
+        <!-- <h1><%= matkul1 %></h1> -->
+
+        <!-- <h1><%= mkhasil2 %></h1>
+        <h1><%= mkhasil %></h1> -->
+        <!-- <h1><%= EntropyTotal2 %></h1>
+        <h1><%= TotalRek2 %></h1>
+        <h1><%= TotalMK2 %></h1> -->
+
+        <!-- end line  -->
+
+
+        <!-- 3 -->
+        <% var kl2=[]; %>
+        <!-- <h1><%= matkul1.length %></h1> -->
+
+        <% var total3=0; %>
+        <%  var TotalRek3=0; %>
+        <%  var TotalMK3=0; %>
+        <%  var EntropyTotal3=0; %>
+
+        <% for (var k=0;k<total;k++){ %>
+            <% for (var i=0;i<datalist[k].matkul.length;i++){ %>
+                <% if (k==kl[k]){ %>
+                    <% if (datalist[k].matkul[i].nama_MK==MK2){ %>
+                        <% if (datalist[k].matkul[i].hasil==mkhasil2) { %>
+
+                            <% total3=total3+1;%>
+
+                            <% kl2[k]=k; %>
+
+                            <!-- <h1><%= kl2[k] %></h1> -->
+
+                            <%  if (datalist[k].Rek==true){ %>
+                                <%  TotalRek3=TotalRek3+1;%>
+                            <% }%>
+                            <%  if(datalist[k].Rek==false){ %>
+                                <%  TotalMK3=TotalMK3+1; %> 
+                            <% } %>
+                            <% EntropyTotal3=((-TotalMK3/total3)*Math.log2(TotalMK3/total3))+((-TotalRek3/total3)*Math.log2(TotalRek3/total3)); %>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            <% } %>
+        <% } %>
+
+        <!-- <h1><%= EntropyTotal3 %></h1>
+        <h1><%= total3 %></h1>
+        <h1><%= TotalRek3 %></h1>
+        <h1><%= TotalMK3 %></h1> -->
+
+        <% var data3 =[{ 
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]}]; %>
+
+            <% var matkulawal3 = ""; %>
+            <% var c3 =0 ; %>
+            <% for (var j = 0; j < 7; j++){ %>
+                <% matkulawal3 = matkul1[j] ; %>
+                <% for (var b=0; b < total; b++){ %>
+                    <% if (b == kl2[b]) { %> 
+                        <% for (var r=0; r < datalist[b].matkul.length; r++){ %> 
+                            <% if (datalist[b].matkul[r].nama_MK==matkulawal3){ %>
+                                <% if (datalist[b].matkul[r].hasil=="C"){ %>
+                                    <%  c3=0; %>
+                                <% } %>
+                                <% if (datalist[b].matkul[r].hasil=="B"){ %>
+                                    <%  c3=1; %>
+                                <% } %>
+                                <% if (datalist[b].matkul[r].hasil=="A"){ %>
+                                    <%  c3=2; %>
+                                <% } %>
+
+                                <% data3[j].matkul[c3].total=data3[j].matkul[c3].total+1; %>
+                                <% if (datalist[b].Rek==true){ %>
+                                    <% data3[j].matkul[c3].Rek=data3[j].matkul[c3].Rek+1; %>
+                                <% } %>
+                                <% if (datalist[b].Rek==false){ %>
+                                    <% data3[j].matkul[c3].MK=data3[j].matkul[c3].MK+1; %>
+                                <% } %>
+                                
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                <% } %>
+
+            <% for(var n=0; n < 3; n++){%>
+                <% data3[j].matkul[n].entropy=((-data3[j].matkul[n].MK/data3[j].matkul[n].total)*Math.log2(data3[j].matkul[n].MK/data3[j].matkul[n].total))+((-data3[j].matkul[n].Rek/data3[j].matkul[n].total)*Math.log2(data3[j].matkul[n].Rek/data3[j].matkul[n].total)); %>
+                <% data3[j].matkul[n].entropy = isNaN(data3[j].matkul[n].entropy) ? 0 : data3[j].matkul[n].entropy; %>
+                <!-- <h1><%= data3[j].matkul[n].entropy%></h1> -->
+                <% } %>
+        
+
+            <% var Gain3 = []; %>
+            <% for (var t=0;t<7;t++){ %>
+                <% Gain3[t]=(EntropyTotal3-( ((data3[t].matkul[0].total/total3)*data3[t].matkul[0].entropy)+((data3[t].matkul[1].total/total3)*data3[t].matkul[1].entropy)+((data3[t].matkul[2].total/total3)*data3[t].matkul[2].entropy) ));%>
+                <!-- <h1><%= Gain3[t]%></h1> -->
+            <% } %> 
+        <% } %> 
+
+        <% var max3=0; %>
+        <% var MK3=""; %>
+        <% var mkhasil3=""; %>
+        <% var maxentropy3=0; %>
+
+        <% for(var o = 0; o < data3.length; o++){  %>
+            <% for(var f = 0; f < data3[o].matkul.length; f++){  %>
+                <% if (data3[o].matkul[f].entropy>=maxentropy3){ %>
+                    <% maxentropy3=data3[o].matkul[f].entropy; %>
+                    <% var v= f; %>
+                <% } %>
+            <% } %>
+        <% } %>
+
+        <% if (v==0){ %>
+            <% mkhasil3 = "C"; %>
+        <% } %>
+
+        <% if (v==1){ %>
+            <% mkhasil3 = "B"; %>
+        <% } %>
+
+        <% if (v==2){ %>
+            <% mkhasil3 = "A"; %>
+        <% } %>
+
+        <% for(var q=0; q < Gain3.length; q++){ %>
+            <% if (Gain3[q]>max3){ %>
+                <% max3=Gain3[q]; %>
+                <% MK3 = matkul1[q]%>
+                <% var p3 = q %>
+                <% mkhasil3 = "C"; %>
+            <% }%>
+        <% }%>
+
+        <% matkul1.splice(p3,1)%>
+        <!-- <h1><%= matkul1 %></h1> -->
+
+        <!-- end line -->
+
+        <!-- 4 -->
+        <% var kl3=[]; %>
+
+        <% var total4=0; %>
+        <%  var TotalRek4=0; %>
+        <%  var TotalMK4=0; %>
+        <%  var EntropyTotal4=0; %>
+
+        <% for (var k=0;k<total;k++){ %>
+            <% for (var i=0;i<datalist[k].matkul.length;i++){ %>
+                <% if (k==kl[k]){ %>
+                    <% if (datalist[k].matkul[i].nama_MK==MK3){ %>
+                        <% if (datalist[k].matkul[i].hasil==mkhasil3) { %>
+
+                            <% total4=total4+1;%>
+
+                            <% kl3[k]=k; %>
+
+                            <!-- <h1><%= kl3[k] %></h1> -->
+
+                            <%  if (datalist[k].Rek==true){ %>
+                                <%  TotalRek4=TotalRek4+1;%>
+                            <% }%>
+                            <%  if(datalist[k].Rek==false){ %>
+                                <%  TotalMK4=TotalMK4+1; %> 
+                            <% } %>
+                            <% EntropyTotal4=((-TotalMK4/total4)*Math.log2(TotalMK4/total4))+((-TotalRek4/total4)*Math.log2(TotalRek4/total4)); %>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            <% } %>
+        <% } %>
+
+        <!-- <h1><%= EntropyTotal4 %></h1>
+        <h1><%= total4 %></h1>
+        <h1><%= TotalRek4 %></h1>
+        <h1><%= TotalMK4 %></h1> -->
+
+        <% var data4 =[{ 
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]}]; %>
+
+            <% var matkulawal4 = ""; %>
+            <% var c4 = 0 ; %>
+            <% for (var j = 0; j < 6; j++){ %>
+                <% matkulawal4 = matkul1[j] ; %>
+                <% for (var b=0; b < total; b++){ %>
+                    <% if (b == kl3[b]) { %> 
+                        <% for (var r=0; r < datalist[b].matkul.length; r++){ %> 
+                            <% if (datalist[b].matkul[r].nama_MK==matkulawal4){ %>
+                                <% if (datalist[b].matkul[r].hasil=="C"){ %>
+                                    <%  c4=0; %>
+                                <% } %>
+                                <% if (datalist[b].matkul[r].hasil=="B"){ %>
+                                    <%  c4=1; %>
+                                <% } %>
+                                <% if (datalist[b].matkul[r].hasil=="A"){ %>
+                                    <%  c4=2; %>
+                                <% } %>
+
+                                <% data4[j].matkul[c4].total=data4[j].matkul[c4].total+1; %>
+                                <% if (datalist[b].Rek==true){ %>
+                                    <% data4[j].matkul[c4].Rek=data4[j].matkul[c4].Rek+1; %>
+                                <% } %>
+                                <% if (datalist[b].Rek==false){ %>
+                                    <% data4[j].matkul[c4].MK=data4[j].matkul[c4].MK+1; %>
+                                <% } %>
+                                
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                <% } %>
+
+            <% for(var n=0; n < 3; n++){%>
+                <% data4[j].matkul[n].entropy=((-data4[j].matkul[n].MK/data4[j].matkul[n].total)*Math.log2(data4[j].matkul[n].MK/data4[j].matkul[n].total))+((-data4[j].matkul[n].Rek/data4[j].matkul[n].total)*Math.log2(data4[j].matkul[n].Rek/data4[j].matkul[n].total)); %>
+                <% data4[j].matkul[n].entropy = isNaN(data4[j].matkul[n].entropy) ? 0 : data4[j].matkul[n].entropy; %>
+                <!-- <h1><%= data4[j].matkul[n].entropy%></h1> -->
+                <% } %>
+        
+
+            <% var Gain4 = []; %>
+            <% for (var t=0; t < 6; t++){ %>
+                <% Gain4[t]=(EntropyTotal4-( ((data4[t].matkul[0].total/total4)*data4[t].matkul[0].entropy)+((data4[t].matkul[1].total/total4)*data4[t].matkul[1].entropy)+((data4[t].matkul[2].total/total4)*data4[t].matkul[2].entropy) ));%>
+                <!-- <h1><%= Gain4[t]%></h1> -->
+            <% } %> 
+        <% } %> 
+
+        <% var max4=0; %>
+        <% var MK4=""; %>
+        <% var mkhasil4=""; %>
+        <% var maxentropy4=0; %>
+
+        <% for(var o = 0; o < data4.length; o++){  %>
+            <% for(var f = 0; f < data4[o].matkul.length; f++){  %>
+                <% if (data4[o].matkul[f].entropy>=maxentropy4){ %>
+                    <% maxentropy4 = data4[o].matkul[f].entropy; %>
+                    <% var v= f; %>
+                <% } %>
+            <% } %>
+        <% } %>
+
+        <% if (v==0){ %>
+            <% mkhasil4 = "C"; %>
+        <% } %>
+
+        <% if (v==1){ %>
+            <% mkhasil4 = "B"; %>
+        <% } %>
+
+        <% if (v==2){ %>
+            <% mkhasil4 = "A"; %>
+        <% } %>
+
+        <% for(var q=0; q < Gain4.length; q++){ %>
+            <% if (Gain4[q]>max4){ %>
+                <% max4=Gain4[q]; %>
+                <% MK4 = matkul1[q]%>
+                <% var p4 = q %>
+                <% mkhasil4 = "A"; %>
+            <% }%>
+        <% }%>
+
+        <% matkul1.splice(p4,1)%>
+        <!-- <h1><%= matkul1 %></h1> -->
+
+        <!-- end line -->
+
+        <!-- 5 -->
+        <% var kl4=[]; %>
+
+        <% var total5=0; %>
+        <%  var TotalRek5=0; %>
+        <%  var TotalMK5=0; %>
+        <%  var EntropyTotal5=0; %>
+
+        <% for (var k=0;k<total;k++){ %>
+            <% for (var i=0;i<datalist[k].matkul.length;i++){ %>
+                <% if (k==kl[k]){ %>
+                    <% if (datalist[k].matkul[i].nama_MK==MK4){ %>
+                        <% if (datalist[k].matkul[i].hasil==mkhasil4) { %>
+
+                            <% total5=total5+1;%>
+
+                            <% kl4[k]=k; %>
+
+                            <!-- <h1><%= kl4[k] %></h1> -->
+
+                            <%  if (datalist[k].Rek==true){ %>
+                                <%  TotalRek5=TotalRek5+1;%>
+                            <% }%>
+                            <%  if(datalist[k].Rek==false){ %>
+                                <%  TotalMK5=TotalMK5+1; %> 
+                            <% } %>
+                            <% EntropyTotal5=((-TotalMK5/total5)*Math.log2(TotalMK5/total5))+((-TotalRek5/total5)*Math.log2(TotalRek5/total5)); %>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            <% } %>
+        <% } %>
+
+        <!-- <h1><%= EntropyTotal5 %></h1>
+        <h1><%= total5 %></h1>
+        <h1><%= TotalRek5 %></h1>
+        <h1><%= TotalMK5 %></h1> -->
+
+        <% var data5 =[{ 
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]},{
+            matkul : [{
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                },
+                {
+                total: 0,Rek:0,MK:0,entropy:0
+                }
+            ]}]; %>
+
+            <% var matkulawal5 = ""; %>
+            <% var c5 = 0 ; %>
+            <% for (var j = 0; j < 5; j++){ %>
+                <% matkulawal5 = matkul1[j] ; %>
+                <% for (var b=0; b < total; b++){ %>
+                    <% if (b == kl4[b]) { %> 
+                        <% for (var r=0; r < datalist[b].matkul.length; r++){ %> 
+                            <% if (datalist[b].matkul[r].nama_MK==matkulawal5){ %>
+                                <% if (datalist[b].matkul[r].hasil=="C"){ %>
+                                    <%  c5=0; %>
+                                <% } %>
+                                <% if (datalist[b].matkul[r].hasil=="B"){ %>
+                                    <%  c5=1; %>
+                                <% } %>
+                                <% if (datalist[b].matkul[r].hasil=="A"){ %>
+                                    <%  c5=2; %>
+                                <% } %>
+
+                                <% data5[j].matkul[c5].total=data5[j].matkul[c5].total+1; %>
+                                <% if (datalist[b].Rek==true){ %>
+                                    <% data5[j].matkul[c5].Rek=data5[j].matkul[c5].Rek+1; %>
+                                <% } %>
+                                <% if (datalist[b].Rek==false){ %>
+                                    <% data5[j].matkul[c5].MK=data5[j].matkul[c5].MK+1; %>
+                                <% } %>
+                                
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                <% } %>
+
+            <% for(var n=0; n < 3; n++){%>
+                <% data5[j].matkul[n].entropy=((-data5[j].matkul[n].MK/data5[j].matkul[n].total)*Math.log2(data5[j].matkul[n].MK/data5[j].matkul[n].total))+((-data5[j].matkul[n].Rek/data5[j].matkul[n].total)*Math.log2(data5[j].matkul[n].Rek/data5[j].matkul[n].total)); %>
+                <% data5[j].matkul[n].entropy = isNaN(data5[j].matkul[n].entropy) ? 0 : data5[j].matkul[n].entropy; %>
+                <!-- <h1><%= data5[j].matkul[n].entropy%></h1> -->
+                <% } %>
+        
+
+            <% var Gain5 = []; %>
+            <% for (var t=0; t < 5; t++){ %>
+                <% Gain5[t]=(EntropyTotal5-( ((data5[t].matkul[0].total/total5)*data5[t].matkul[0].entropy)+((data5[t].matkul[1].total/total5)*data5[t].matkul[1].entropy)+((data5[t].matkul[2].total/total5)*data5[t].matkul[2].entropy) ));%>
+                <!-- <h1><%= Gain4[t]%></h1> -->
+            <% } %> 
+        <% } %> 
+
+        <% var max5=0; %>
+        <% var MK5=""; %>
+        <% var mkhasil5=""; %>
+        <% var maxentropy5=0; %>
+
+        <% for(var o = 0; o < data5.length; o++){  %>
+            <% for(var f = 0; f < data5[o].matkul.length; f++){  %>
+                <% if (data5[o].matkul[f].entropy>=maxentropy5){ %>
+                    <% maxentropy5 = data5[o].matkul[f].entropy; %>
+                    <% var v= f; %>
+                <% } %>
+            <% } %>
+        <% } %>
+
+        <% if (v==0){ %>
+            <% mkhasil5 = "C"; %>
+        <% } %>
+
+        <% if (v==1){ %>
+            <% mkhasil5 = "B"; %>
+        <% } %>
+
+        <% if (v==2){ %>
+            <% mkhasil5 = "A"; %>
+        <% } %>
+
+        <% for(var q=0; q < Gain5.length; q++){ %>
+            <% if (Gain5[q]>max5){ %>
+                <% max5=Gain5[q]; %>
+                <% MK5 = matkul1[q]%>
+                <% var p5 = q %>
+                <% mkhasil5 = "A"; %>
+            <% }%>
+        <% }%>
+
+        <% matkul1.splice(p5,1)%>
+        <!-- <h1><%= matkul1 %></h1> -->
+
+        <!-- end line -->
+        
+    <br>
+
+    <!-- <h1><%= matkul1 %></h1> -->
+    
+    <!-- ConsoleLog. (1) -->
+    <!-- <h1><%= JSON.stringify(data) %></h1>
+    <h1><%= total %></h1>
+    <h1><%= EntropyTotal %></h1>
+    <h1><%= TotalRek %></h1>
+    <h1><%= TotalMK %></h1>
+    <h1><%= Gain %></h1>
+    <h1><%= mkhasil %></h1>
+    <%= matkul1.splice(p,1)%> -->
+
+    
+    <br>
+
+    <!-- <h1><%= max %></h1>   
+    <h1><%= maxentropy %></h1> -->
+
+    <br>
+    <!-- ConsoleLog. (2) -->
+    <!-- <h1><%= JSON.stringify(data2) %></h1>
+    <h1><%= total2 %></h1>
+    <h1><%= EntropyTotal2 %></h1>
+    <h1><%= TotalRek2 %></h1>
+    <h1><%= TotalMK2 %></h1>
+    <h1><%= Gain2 %></h1>
+    <h1><%= mkhasil2 %></h1>
+    <%= matkul1.splice(p2,1)%> -->
+
+    <br>
+
+    <!-- <h1><%= max2 %></h1>   
+    <h1><%= maxentropy2 %></h1>  -->
+
+    <br>
+    <!-- ConsoleLog. (3) -->
+    <!-- <h1><%= JSON.stringify(data3) %></h1>
+    <h1><%= total3 %></h1>
+    <h1><%= EntropyTotal3 %></h1>
+    <h1><%= TotalRek3 %></h1>
+    <h1><%= TotalMK3 %></h1>
+    <h1><%= Gain3 %></h1>
+    <h1><%= mkhasil3 %></h1>
+    <%= matkul1.splice(p3,1)%> -->
+
+    <br>
+
+    <!-- <h1><%= max3 %></h1>   
+    <h1><%= maxentropy3 %></h1>  -->
+
+    <br>
+    <!-- ConsoleLog. (4) -->
+    <!-- <h1><%= JSON.stringify(data4) %></h1>
+    <h1><%= total4 %></h1>
+    <h1><%= EntropyTotal4 %></h1>
+    <h1><%= TotalRek4 %></h1>
+    <h1><%= TotalMK4 %></h1>
+    <h1><%= Gain4 %></h1>
+    <h1><%= mkhasil4 %></h1>
+    <%= matkul1.splice(p4,1)%> -->
+
+    <br>
+
+    <!-- <h1><%= max4 %></h1>   
+    <h1><%= maxentropy4 %></h1>  -->
+
+    <br>
+    <!-- ConsoleLog. (5) -->
+    <!-- <h1><%= JSON.stringify(data5) %></h1>
+    <h1><%= total5 %></h1>
+    <h1><%= EntropyTotal5 %></h1>
+    <h1><%= TotalRek5 %></h1>
+    <h1><%= TotalMK5 %></h1>
+    <h1><%= Gain5 %></h1>
+    <h1><%= mkhasil5 %></h1>
+    <%= matkul1.splice(p5,1)%> -->
+    
+    <br>
+
+    <!-- <h1><%= max5 %></h1>   
+    <h1><%= maxentropy5 %></h1>  -->
+
+</div>
+
+<span id="MKA" hidden > <%= JSON.stringify(mkhasil) %></span>
+<span id="MKB" hidden > <%= JSON.stringify(mkhasil2) %></span>
+<span id="MKC" hidden ><%= JSON.stringify(mkhasil3) %></span>
+<span id="MKD" hidden ><%= JSON.stringify(mkhasil4) %></span>
+<span id="MKE" hidden ><%= JSON.stringify(mkhasil5) %></span>
+
+<script>
+    var MKA = JSON.parse($('#MKA').text());
+    $('#MKA').remove();
+    var MKB = JSON.parse($('#MKB').text());
+    $('#MKB').remove();
+    var MKC = JSON.parse($('#MKC').text());
+    $('#MKC').remove();
+    var MKD = JSON.parse($('#MKD').text());
+    $('#MKD').remove();
+    var MKE = JSON.parse($('#MKE').text());
+    $('#MKE').remove();
+
+    window.localStorage.setItem("MKA", MKA);
+    window.localStorage.setItem("MKB", MKB);
+    window.localStorage.setItem("MKC", MKC);
+    window.localStorage.setItem("MKD", MKD);
+    window.localStorage.setItem("MKE", MKE);
+
+
+    console.log(MKA)
+    console.log(MKB)
+    console.log(MKC)
+    console.log(MKD)
+    console.log(MKE)
+    
+  </script>
+
 </body>
 </html>

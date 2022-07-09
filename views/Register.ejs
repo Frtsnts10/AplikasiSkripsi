@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Registrasi | Aplikasi Prediksi dan Rekomendasi Matakuliah</title>
 </head>
 
 <style>
@@ -189,19 +197,20 @@
 
 <body>
     <main>
-        <form action="/LogAdm" method="post" >
-            <div class="row">
-                <div class="colm-logo">
-                    <img src="Logo.jpg"  width="300">
-                    <h1>Aplikasi Prediksi dan Rekomendasi Nilai Mahasiswa</h1>                
-                </div>
-                <div class="colm-form">
-                    <div class="form-container">
-                        <input id="username" name="username" type="text" placeholder="Nama Mahasiswa" class="form-control" required>
-                        <input id="password" name="password" type="password" placeholder="Password" class="form-control" required>
-                        <button type="submit" class="btn-login">Login</button>
-                        
-                        <button class="btn-new" onclick="window.location='/RegAdm'">Daftar Baru</button>
+        <form action="/Register" method="post" >
+            <div class="controls">
+                <div class="row">
+                    <div class="colm-logo">
+                        <img src="Logo.jpg"  width="300">
+                        <h1>Aplikasi Prediksi dan Rekomendasi Nilai Mahasiswa</h1>                
+                    </div>
+                    <div class="colm-form">
+                        <div class="form-container">
+                            <a href="Login" style="text-align: left; width: 2%;">Kembali</a>
+                            <input id="username" type="text" name="username" placeholder="Nama User" class="form-control" required>
+                            <input id="password" type="password" name="password" placeholder="Password" class="form-control" required>
+                            <button type="submit" class="btn-new">Daftar</a></button>
+                        </div>
                     </div>
                 </div>
             </div>

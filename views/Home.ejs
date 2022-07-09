@@ -4,10 +4,16 @@
   <title>Aplikasi Prediksi dan Rekomendasi Nilai Mahasiswa</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
 </head>
 
 
@@ -23,37 +29,55 @@
     color: white;
     text-align: center;
     line-height: 90vh;
-    }
+  }
 
-    .splash.display-none{
-        position: fixed;
-        opacity: 0;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: black;
-        z-index: -10;
-        color: white;
-        text-align: center;
-        line-height: 90vh;
-        transition: all 0.5s;
-    }
-
-    @keyframes fadeIn {
-      to{
-        opacity: 1;
-      }
-    }
-
-    .fade-in{
+  .splash.display-none{
+      position: fixed;
       opacity: 0;
-      animation: fadeIn 1s ease-in forwards;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: black;
+      z-index: -10;
+      color: white;
+      text-align: center;
+      line-height: 90vh;
+      transition: all 0.5s;
+  }
+
+  @keyframes fadeIn {
+    to{
+      opacity: 1;
     }
+  }
+
+  .fade-in{
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+  }
 
   body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
   .fa-anchor,.fa-coffee {font-size:200px}
+
+  .button {
+        background-color: black; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        }
+    .button2:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+        };
 </style>
 
 <body>
@@ -75,10 +99,10 @@
   </div> -->
 
   <!-- Header -->
-  <header class="w3-container w3-center" style="padding:30px 16px; background-image: url(untar.jpg); background-size: cover;">
-        <img src="Logo.jpg"  width="250">
+  <header class="w3-container w3-center" style="padding:100px 16px; background-image: url(cloud.jpg); background-size: cover;">
+        <img src="Logo.jpg"  width="300">
         <h1 class="w3-margin" style="color: white; font-weight: bolder;";">Aplikasi Prediksi Nilai dan Rekomendasi Mata Kuliah Universitas Tarumanagara</h1>
-    <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top"><a href="Choose">Get Started</a></button>
+    <button class="button button2"><a href="Login">Get Started</a></button>
   </header>
 
   <!-- First Grid -->
@@ -86,13 +110,13 @@
     <div class="w3-content">
       <div class="w3-twothird">
         <h1>Apa nama aplikasi Ini?</h1>
-        <h5 class="w3-padding-32">Aplikasi ini disebut dengan aplikasi prediksi nilai dan rekomendasi matakuliah. Aplikasi akan memberikan prediksi nilai mahasiswa dan memberikan rekomendasi matakuliah agar tidak salah mengambil matakuliah.</h5>
+        <h5 class="w3-padding-32">Aplikasi ini diberi nama aplikasi prediksi nilai dan rekomendasi matakuliah. Aplikasi akan memberikan prediksi nilai dan memberikan rekomendasi matakuliah agar mahasiswa tidak salah mengambil matakuliah dan atau juga ditujukan kepada mahasiswa yang mempunyai keterbatasan sks sehingga kesulitan mengambil matakuliah.</h5>
 
         <p class="w3-text-grey">Aplikasi ini merupakan tugas akhir matakuliah Teknik Informatika.</p>
       </div>
 
       <div class="w3-third w3-center">
-        <img src="Logo.jpg"  width="400">
+        <img src="SkripsiLogo.png"  width="300">
       </div>
     </div>
   </div>
@@ -105,10 +129,10 @@
       </div>
 
       <div class="w3-twothird">
-        <h1>Q: "Bagaimana Cara Kerja Program Ini?"</h1>
-        <h5 class="w3-padding-32">Aplikasi ini akan menampilkan hasil rekomendasi matakuliah berdasarkan nilai mahasiswa.</h5>
+        <h1>Bagaimana Cara Kerja Program Ini?</h1>
+        <h5 class="w3-padding-32">Dengan memilih jenis matakuliah dan memasukkan nilai.</h5>
 
-        <p class="w3-text-grey">Cara kerja aplikasi ini dengan memilih nama mahasiswa kemudian akan menampilkan nilai serta hasil rekomendasi dan jenis matakuliah rekomendasi.</p>
+        <p class="w3-text-grey">Cara kerja aplikasi ini dengan memilih matakuliah dan memasukkan nilai kemudian program akan menampilkan matakuliah kelompok beserta nama matakuliah terbaik sesuai dengan nilai mahasiswa.</p>
       </div>
     </div>
   </div>
@@ -118,6 +142,7 @@
       <h3 class="w3-margin w3-text-grey">Tetap Semangat, Pantang pulang sebelum Jadi.</h3>
   </div> -->
 
+
   <!-- Footer -->
   <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
 
@@ -125,6 +150,7 @@
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
   </footer>
 
+  
 <script>
   // Used to toggle the menu on small screens when clicking on the menu button
   function myFunction() {
@@ -150,6 +176,8 @@
           mainNav.classList.toggle('active')
   });
 </script>
+
+
 
 </body>
 </html>

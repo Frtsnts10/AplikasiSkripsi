@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -12,8 +11,9 @@
     
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <title>Hasil Rekomendasi</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <title>Cek Rekomendasi | Aplikasi Prediksi Nilai dan Rekomendasi MataKuliah</title>
 </head>
 
 <style>
@@ -83,11 +83,12 @@
         text-align: center;
         justify-content: center;
         border: 1px solid black;
-        width: 60%;
+        width:65%;
         border-spacing: 30px;
         border-collapse:collapse;
-        }
-        th{
+
+    }
+    th{
         border: 1px solid black;
         margin: auto;
         text-align: center;
@@ -98,982 +99,199 @@
         padding-right: 20px;
         background: black;
         color: white;
-    
-        }
-        td{
+        
+
+    }
+    td{
         border: 1px solid black;
-        width: 20%;
+        width: 30%;
         justify-content: center;
         text-align: center;
         padding-top: 10px;
         padding-bottom: 10px;
-        }
+    }
+
+    /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+  height: 50%;
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
 </style>
 
 
-<body>
+<body style="background-image: url(bg.png); background-size: cover;">
     
     <!-- Header -->
-    <header class="w3-container w3-center" style="padding:10px 16px; background-image: url(untar.jpg); background-size: cover; display: flex; justify-content: center; text-align: center; margin: auto;">
-        <img src="Logo.jpg"  width="250">
-        <h1 class="w3-margin" style="color: white; font-weight: bolder; margin: auto;justify-content: center;text-align: center;";">Aplikasi Prediksi Nilai dan Rekomendasi Mata Kuliah Universitas Tarumanagara</h1>
+    <header class="w3-container w3-center" style="padding:10px 16px;justify-content: center; text-align: center; margin: auto;">
+        <img src="Logo.jpg"  width="250"><br>
+        <h1 class="w3-margin" style="color: black; font-weight: bolder; margin: auto;justify-content: center;text-align: center;">Cek Rekomendasi Matakuliah</h1>
     </header>
 
-    <p align="right" style="padding-right: 20px;">
-        <button onclick="window.print()">Print</button>
-    </p>
-
-    <br><br><br>
-    <div>
-        <h1 style="justify-content: center; margin: auto; text-align: center;">Nilai Saya</h1>
-    </div>
     
-    <table>
-        <tr>
-          <th>Nama</th>
-          <th>NIM</th>
-          <th>Algoritma I</th>
-          <th>PBO </th>
-          <th>Kalkulus I</th>
-          <th>Citra</th>
-          <th>Statistik</th>
-          <th>Data Mining</th>
-          <th>Game Development</th>
-          <th>Machine Learning</th>
-          <th>Mobile Development</th>
-          <th>Aljabar Linier</th>
-        </tr>
-        
-        
-        <tr>
-            <td><%= currentUser.username %></td>
-
-            <% for(var a=0; a < datalist.length;a++) { %>
-            <% if(datalist[a].name == currentUser.username){ %>
-            <td><%= datalist[a].nim %></td>
-            <% for(var b=0; b < datalist[a].matkul.length; b++) { %>
-                <td><%= datalist[a].matkul[b].nilai %></td>
-            <% } %>
-            <% } %>
-            <% } %>
-        </tr>
-    </table>
-
-    <br><br><br>
-    <div style="justify-content: center; text-align: center;">
-        <h1>Hasil Rekomendasi Nilai</h1>
-    </div>
-    <table id="" style="">
-        <tr>
-            <th>Nilai Rata-rata</th>
-            <th>Hasil Nilai</th>
-            <th>Prediksi</th>
-            <th>Hasil: Rekomendasi?</th>
-            <th>Matakuliah Rekomendasi</th>
-            <th>Akurasi</th>
-        </tr>
-        
-        <tr>
-            <td id="meannilai"></td>
-            <td id= "hasil" ></td>
-            <td id="prediksi"></td>
-            <td id="hrek"></td>
-            <td id="rek"> </td>
-            <td></td>
-        </tr>
-
-    </table>
-
-    <br><br>
-    <center>
-        <button style="margin: auto; justify-content: center;"><a href="IndexMhs">Kembali</a></button>
-    </center>
-    
-   
-    <span id="mhs" hidden><%= JSON.stringify(datalist) %></span>
-    <span id="unamemhs" hidden><%= JSON.stringify(currentUser.username) %></span>
-    
-    
-    
-    
-    <div class="node1">
+    <div class="body-form" style="margin: auto; justify-content: center; padding-left: 20%; padding-right: 20%;">
+        <a href="IndexMhs">Kembali</a>
+        <div style="padding-top: 5%; border-radius: 10px; height: auto; margin: auto;">
             
-        <%  var total=datalist.length; %>
-        <%  var TotalRekomendasi=0; %>
-        <%  var TotalAmbilMKLain=0; %>
-        <%  for (var a=0; a < total; a++){ %>
-            <%  if (datalist[a].rekomendasi==true) { %>
-                <%  TotalRekomendasi=TotalRekomendasi+1; %>
-            <% } %>
-        <%  if(datalist[a].rekomendasi==false) { %>
-            <%  TotalAmbilMKLain=TotalAmbilMKLain+1; %> 
-        <% } %>
-        <% } %>
-        <% var EntropyTotal=((-TotalAmbilMKLain/total)*Math.log2(TotalAmbilMKLain/total))+((-TotalRekomendasi/total)*Math.log2(TotalRekomendasi/total)); %>
-        
-        <% var data =[{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]}]; %>
-
-        <% var matkulawal = ""; %>
-        <% var c =0; %>
-        <% for (var j = 0; j < 10; j++){ %>
-            <% if (j==0){ %>
-                <% matkulawal="AlgoritmaI"; %>
-            <% } %>
-            <% if (j==1){ %>
-                <%  matkulawal="PBO"; %>
-            <% } %>
-            <% if (j==2){ %>
-                <%  matkulawal="KalkulusI"; %>
-            <% } %>
-            <% if (j==3){ %>
-                <%  matkulawal="Citra"; %>
-            <% } %>
-            <% if (j==4){ %>
-                <%  matkulawal="Statistik"; %>
-            <% } %>
-            <% if (j==5){ %>
-                <%  matkulawal="Data"; %>
-            <% } %>
-            <% if (j==6){ %>
-                <%  matkulawal="GameDevelopment"; %>
-            <% } %>
-            <% if (j==7){ %>
-                <%  matkulawal="MachineLearning"; %>
-            <% } %>
-            <% if (j==8){ %>
-                <%  matkulawal="MobileDevelopment"; %>
-            <% } %>
-            <% if (j==9){ %>
-                <%  matkulawal="Aljabar"; %>
-            <% } %>
-
-            <% for (var b=0; b < datalist.length; b++){ %>
-                <% for (var e=0; e < 10; e++){ %>
-                    <% if (datalist[b].matkul[e].nama_matakuliah==matkulawal){ %>
-                        <% if (datalist[b].matkul[e].hasil=="S Kurang"){ %>
-                            <%  c=0; %>
-                        <% } %>
-                        <% if (datalist[b].matkul[e].hasil=="Kurang"){ %>
-                            <%  c=1; %>
-                        <% } %>
-                        <% if (datalist[b].matkul[e].hasil=="Cukup"){ %>
-                            <%  c=2; %>
-                        <% } %>
-                        <% if (datalist[b].matkul[e].hasil=="Baik"){ %>
-                            <%  c=3; %>
-                        <% } %>
-                        <% if (datalist[b].matkul[e].hasil=="S Baik"){ %>
-                            <%  c=4; %>
-                        <% } %>
+            <table>
+                <tr>
+                    <th colspan="1"> Matakuliah Rekomendasi</th>
+                    <th colspan="1"> Nilai Minimum</th>
+                    <th colspan="1"> Hasil Rekomendasi</th>
+                    <th colspan="1"> Kelompok Rekomendasi</th>
+                </tr>
+           
+                <tr>
+                    <% var mk= ["Data Mining", "Machine Learning",""] %>
+                    <% var kel= ["Data Science","",""] %>
+            
+                    <% for(var a=0; a < datalist.length;a++) { %>
+                        <% for(var b=0; b < datalist[a].matkul.length;b++) { %>
                             
-                        <% data[j].matkul[c].total=data[j].matkul[c].total+1; %>
+                            <% if(datalist[a].Nama == currentUser.username){ %>
+                                <td><%= datalist[a].matkul[b].nama_MK %></td>
+                                <% var d="MKA"+b  %>
+                                <td id="<%= d %>"></td>
+                                <td ><%= datalist[a].Hasil[0].Rekomendasi1[b]  %></td>
+                                <td><%= datalist[a].Hasil[1].Kelompok[b]  %></td>
+                                <% } %>
+                            </tr>                           
+                            
+                            
+                        <% } %>
                         
-                        <% if (datalist[b].rekomendasi==true){ %>
-                            <% data[j].matkul[c].Rekomendasi=data[j].matkul[c].Rekomendasi+1; %>
-                            <% } %>
-                        <% if (datalist[b].rekomendasi==false){ %>
-                            <% data[j].matkul[c].AmbilMKLain=data[j].matkul[c].AmbilMKLain+1; %>
-                            <% } %>
-                        <% } %>
                     <% } %>
-                <% } %>
-                <% for(var d=0; d < 5; d++){%>
-                    <% data[j].matkul[d].entropy=((-data[j].matkul[d].AmbilMKLain/data[j].matkul[d].total)*Math.log2(data[j].matkul[d].AmbilMKLain/data[j].matkul[d].total))+((-data[j].matkul[d].Rekomendasi/data[j].matkul[d].total)*Math.log2(data[j].matkul[d].Rekomendasi/data[j].matkul[d].total)); %>
-                    <% data[j].matkul[d].entropy = isNaN(data[j].matkul[d].entropy) ? 0 : data[j].matkul[d].entropy; %>
-                                    
-                    <!-- <h1><%= data[j].matkul[d].entropy%></h1> -->
-
-                <% } %>
-
-                <% var Gain = []; %>
-                <% for (var g=0; g < 10; g++){ %>
-                    <% Gain[g]=(EntropyTotal-( ((data[g].matkul[0].total/total)*data[g].matkul[0].entropy)+ ((data[g].matkul[1].total/total)*data[g].matkul[1].entropy)+ ((data[g].matkul[2].total/total)*data[g].matkul[2].entropy)+ ((data[g].matkul[3].total/total)*data[g].matkul[3].entropy)+ ((data[g].matkul[4].total/total)*data[g].matkul[4].entropy)));%>
-                <% } %>
-            <% } %>
-            <!-- final --1  -->
-
-        <!-- 2 -->
-        <% var matkul=[]; %>
-        <% var max1=0; %>
-        <% var matkulawal1=""; %>
-        <% var hasil1=""; %>
-        
-        <% for(var l=0; l < Gain.length; l++){%>
-            <% if (l==0){ %>
-                <% matkul[l]="AlgoritmaI"; %>
-            <% } %>
-            <% if (l==1){ %>
-                <%  matkul[l]="PBO"; %>
-            <% } %>
-            <% if (l==2){ %>
-                <%  matkul[l]="KalkulusI"; %>
-            <% } %>
-            <% if (l==3){ %>
-                <%  matkul[l]="Citra"; %>
-            <% } %>
-            <% if (l==4){ %>
-                <%  matkul[l]="Statistik"; %>
-            <% } %>
-            <% if (l==5){ %>
-                <%  matkul[l]="Data"; %>
-            <% } %>
-            <% if (l==6){ %>
-                <%  matkul[l]="GameDevelopment"; %>
-            <% } %>
-            <% if (l==7){ %>
-                <%  matkul[l]="MachineLearning"; %>
-            <% } %>
-            <% if (l==8){ %>
-                <%  matkul[l]="MobileDevelopment"; %>
-            <% } %>
-            <% if (j==9){ %>
-                <%  matkul[l]="Aljabar"; %>
-            <% } %>    
-        <% }%>
-        
-        <% var maxentropy1 = 0; %>
-
-        <% for(var o = 0; o < data.length; o++){  %>
-            <% for(var f = 0; f < data[o].matkul.length; f++){  %>
-                <% if (data[o].matkul[f].entropy >= maxentropy1){ %>
-                    <% maxentropy1=data[o].matkul[f].entropy; %>
-                    <% var v= f; %>
-                    
-                    <!-- <h1><%= v %></h1> -->
-
-                <% } %>
-            <% } %>
-        <% } %>
-
-        <% if (v==0){ %>
-            <% hasil1 = "S Kurang"; %>
-        <% } %>
-
-        <% if (v==1){ %>
-            <% hasil1 = "Kurang"; %>
-        <% } %>
-
-        <% if (v==2){ %>
-            <% hasil1 = "Cukup"; %>
-        <% } %>
-
-        <% if (v==3){ %>
-            <% hasil1 = "Baik"; %>
-        <% } %>
-
-        <% if (v==4){ %>
-            <% hasil1 = "S Baik"; %>
-        <% } %>
-
-        <% for(var e=0;e<Gain.length;e++){ %>
-            <% if (Gain[e]>=max1){ %>
-                <% max1=Gain[e]; %>
-                <% matkulawal1 = matkul[e]%>
-                <% var p1 = e%>
-                <% hasil1 = "S Baik"; %>  
-            <% } %>
-        <% } %>
-
-        <% matkul.splice(p1,1)%>
-        <!-- <h1><%= matkulawal %></h1>
-        <h1><%= matkulawal1 %></h1> -->
-
-        <% var kl=[]; %>
-        <% var kn=[]; %>
-
-        <%  var total1=0; %>
-        <%  var TotalRekomendasi1=0; %>
-        <%  var TotalAmbilMKLain1=0; %>
-        <%  var EntropyTotal1=0; %>
-
-        <% for (var k = 0; k < total; k++){ %>
-            <% for (var i = 0; i < datalist[k].matkul.length; i++){ %>
-                <% if (datalist[k].matkul[i].nama_matakuliah==matkulawal1){ %>
-                    <% if (datalist[k].matkul[i].hasil==hasil1) { %>
-                        <% total1 = total1+1;%>
-
-                        <% kl[k]=k; %>
-                        
-                        <%  if (datalist[k].rekomendasi== true){ %>
-                            <%  TotalRekomendasi1=TotalRekomendasi1+1;%>
-                        <% }%>
-                        <%  if(datalist[k].rekomendasi== false){ %>
-                            <%  TotalAmbilMKLain1=TotalAmbilMKLain1+1; %> 
-                        <% } %>
-
-                        <% EntropyTotal1=((-TotalAmbilMKLain1/total1)*Math.log2(TotalAmbilMKLain1/total1))+((-TotalRekomendasi1/total1)*Math.log2(TotalRekomendasi1/total1)); %>
-                    <% } %>
-                <% } %>
-            <% } %>
-        <% } %>
-
-        <!-- <h1><%= EntropyTotal %></h1> 
-        <h1><%= total %></h1>
-        <h1><%= TotalRekomendasi %></h1>
-        <h1><%= TotalAmbilMKLain %></h1>
-        <h1><%= Gain %></h1>
-
-        <br><br>
-        <h1><%= EntropyTotal1 %></h1> 
-        <h1><%= total1 %></h1>
-        <h1><%= TotalRekomendasi1 %></h1>
-        <h1><%= TotalAmbilMKLain1 %></h1> -->
-
-        <% var data1 =[{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{ 
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]},{
-            matkul : [
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                },
-                {
-                total: 0,Rekomendasi:0,AmbilMKLain:0,entropy:0
-                }
-            ]}]; %>
-
-            <% var matkulawal1 = ""; %>
-            <% var c1 =0 ; %>
-            <% for (var j=0; j < 9; j++){ %>
-            <% matkulawal1 = matkul[j] ; %>
-
-            <% for (var b=0; b < total; b++){ %>
-                <% if (b == kl[b]) { %> 
-                    <% for (var r=0;r < datalist[b].matkul.length; r++){ %> 
-                        <% if (datalist[b].matkul[r].nama_matakuliah==matkulawal1){ %>
-                            <% if (datalist[b].matkul[r].hasil1=="S Kurang"){ %>
-                                <%  c1=0; %>
-                            <% } %>
-                            <% if (datalist[b].matkul[r].hasil1=="Kurang"){ %>
-                                <%  c1=1; %>
-                            <% } %>
-                            <% if (datalist[b].matkul[r].hasil1=="Cukup"){ %>
-                                <%  c1=2; %>
-                            <% } %>
-                            <% if (datalist[b].matkul[r].hasil1=="Baik"){ %>
-                                <%  c1=3; %>
-                            <% } %>
-                            <% if (datalist[b].matkul[r].hasil1=="S Baik"){ %>
-                                <%  c1=4; %>
-                            <% } %>
-
-                            <% data1[j].matkul[c1].total=data1[j].matkul[c1].total+1; %>
-                            <% if (datalist[b].rekomendasi== true ){ %>
-                                <% data1[j].matkul[c1].Rekomendasi=data1[j].matkul[c1].Rekomendasi+1; %>
-                            <% } %>
-                            <% if (datalist[b].rekomendasi== false){ %>
-                                <% data1[j].matkul[c1].AmbilMKLain=data1[j].matkul[c1].AmbilMKLain+1; %>
-                            <% } %>
-                        <% } %>
-                    <% } %>
-                <% } %>
-            <% } %>
+            </table>
             
-            <% for(var n = 0; n < 5; n++){%>
-                <% data1[j].matkul[n].entropy=((-data1[j].matkul[n].AmbilMKLain/data1[j].matkul[n].total)*Math.log2(data1[j].matkul[n].AmbilMKLain/data1[j].matkul[n].total))+((-data1[j].matkul[n].Rekomendasi/data1[j].matkul[n].total)*Math.log2(data1[j].matkul[n].Rekomendasi/data1[j].matkul[n].total)); %>
-                <% data1[j].matkul[n].entropy = isNaN(data1[j].matkul[n].entropy) ? 0 : data1[j].matkul[n].entropy; %>
-                
-                
-                <!-- <h1><%= data1[j].matkul[n].entropy%></h1> -->
+            <!-- <td><button onclick="document.getElementById('id01').style.display='block'">Lihat</button></td> -->
+        </div>
 
-
-            <% } %>
-            
-            <% var Gain1 = []; %>
-            <% for (var t = 0; t < 9; t++){ %>
-                <% Gain1[t]=(EntropyTotal1-(((data1[t].matkul[0].total/total1)*data1[t].matkul[0].entropy)+((data1[t].matkul[1].total/total1)*data1[t].matkul[1].entropy)+((data1[t].matkul[2].total/total1)*data1[t].matkul[2].entropy)));%>
-                <!-- <h1><%= Gain1[t]%></h1> -->
-            <% } %>
-
-            <!-- <h1><%= JSON.stringify(data1)%></h1> -->
-            
-            <!-- final --2 -->
-
-            
-            <% } %>
     </div>
 
-    <!-- <h1><%= JSON.stringify(data) %></h1> -->
-    <br><br>
-    <!-- <h1><%= JSON.stringify(data1) %></h1> -->
-    <br>
 
+    <!-- <div id="id01" class="modal" style="margin: auto; justify-content: center; text-align: center; padding-top: 15%;">
 
-    <!-- ConsoleLog. (1) -->
-    <!-- <h1><%= total %></h1>
-    <h1><%= maxentropy1 %></h1>
-    <h1><%= EntropyTotal %></h1>
-    <h1><%= TotalRekomendasi %></h1>
-    <h1><%= TotalAmbilMKLain %></h1>
-    <h1><%= matkulawal %></h1>   
-    <h1><%= Gain %></h1>
-    <br><br>       
-    <h1><%= total1 %></h1>
-    <h1><%= EntropyTotal1 %></h1>
-    <h1><%= TotalRekomendasi1 %></h1>
-    <h1><%= TotalAmbilMKLain1 %></h1>           
-    <h1><%= matkulawal1 %></h1>
-    <h1><%= Gain1 %></h1>
-    <br><br> -->
+        <form class="modal-content animate" action="" style="text-align: center; margin: auto;">
+            <div style="padding-top: 5%;">
+                <table>
+                    <tr>
+                        <th colspan="3"> Similarity</th>
+                        <th colspan="3"> MAE</th>
+                    </tr>
+                    <tr>
+    
+                    </tr>
+                    <tr>       
+                        <% for(var a=0; a < datalist.length;a++) { %>
+                            <% for(var b=0; b < datalist[a].matkul.length;b++) { %>
+                                <% if(datalist[a].Nama == currentUser.username){ %>
+                                    <td colspan="3"><%= datalist[a].matkul[b].hasil%></td>
+                                    <td colspan="3"></td>
+                                    <td colspan="3"></td>
+                                    <td colspan="3"></td>
+                                    <td colspan="3"></td>
+                                    <td colspan="3"></td>
+                                </tr>
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                </table>
+
+                <button style="justify-content: end; text-align: end;" onclick="window.print()">Print</button>
+            </div>
+        </form>
+    </div> -->
+
 </body>
 
+<span id="mhs" hidden><%= JSON.stringify(datalist) %></span>
+<span id="uname" hidden><%= JSON.stringify(currentUser.username)%></span>
+<span id="mk" hidden><%= JSON.stringify(datalist[0].matkul) %></span>
+
+
 <script>
-
-    var a = [
-        {
-            name: 'MhsA',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [65, 80, 60, 65, 100, 75, 62, 42, 100, 87]
-        }, 
-        {
-            name: 'MhsB',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [41, 45, 65, 42, 45, 41, 52, 33, 35, 37]
-        },
-        {
-            name: 'MhsC',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [95, 99, 42, 86, 62, 85, 43, 85, 95, 82]
-        },
-        {
-            name: 'MhsD',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [49, 55, 75, 0, 82, 65, 79, 46, 41, 55]
-        },
-        {
-            name: 'MhsE',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [63, 52, 57, 85, 54, 77, 64, 60, 56, 52]
-        },
-        {
-            name: 'MhsF',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [45, 48, 60, 48, 43, 43, 85, 99, 37, 34]
-        },
-        {
-            name: 'MhsG',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [88, 65, 25, 75, 41, 65, 21, 88, 84, 45]
-        },
-        {
-            name: 'MhsH',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [84, 81, 62, 81, 79, 87, 56, 76, 36, 39]
-        },
-        {
-            name: 'MhsI',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [42, 48, 81, 40, 55, 20, 81, 42, 40, 47]
-        },
-        {
-            name: 'MhsJ',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [45, 84, 70, 15, 88, 55, 80, 15, 67, 100]
-        },
-        {
-            name: 'MhsK',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [58, 100, 69, 75, 71, 61, 96, 59, 66, 82]
-        },
-        {
-            name: 'MhsL',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [30, 55, 59, 49, 96, 59, 58, 42, 40, 59]
-        },
-        {
-            name: 'MhsM',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [63, 86, 84, 61, 13, 88, 87, 57, 52, 43]
-        },
-        {
-            name: 'MhsN',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [33, 66, 54, 45, 94, 67, 37, 35, 48, 62]
-        },
-        {
-            name: 'MhsO',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [66, 98, 87, 66, 54, 53, 81, 80, 25, 89]
-        },
-        {
-            name: 'MhsP',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [56, 54, 39, 58, 99, 64, 34, 26, 58, 55]
-        },
-        {
-            name: 'MhsQ',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [93, 68, 71, 87, 47, 52, 59, 82, 88, 59]
-        },
-        {
-            name: 'MhsR',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [47, 60, 87, 28, 94, 72, 81, 43, 45, 60]
-        },
-        {
-            name: 'MhsS',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [43, 41, 66, 44, 62, 35, 53, 38, 39, 44]
-        },
-        {
-            name: 'MhsT',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [82, 84, 81, 88, 77, 99, 97, 93, 86, 83]
-        },
-        {
-            name: 'MhsU',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [80, 52, 73, 50, 79, 70, 66, 70, 70, 70]
-        },
-        {
-            name: 'MhsV',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [42, 89, 85, 77, 74, 75, 58, 67, 73, 91]
-        },
-        {
-            name: 'MhsW',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [72, 84, 58, 83, 72, 78, 76, 78, 80, 75]
-        },
-        {
-            name: 'MhsX',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [73, 88, 78, 0, 88, 73, 86, 72, 73, 91]
-        },
-        {
-            name: 'MhsY',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [66, 45, 85, 83, 79, 0, 65, 78, 72, 56]
-        },
-        {
-            name: 'MhsZ',
-            Nama: ['ALGORITMA', 'PBO', 'K1', 'CITRA', 'STATISTIK', 'DATA M.', 'GD', 'ML', 'MD', 'ALJABR L.'],
-            Nilai: [0, 55, 80, 81, 79, 70, 84, 80, 81, 92]
-        },
-    ]
-
-
-    var meanMK1     = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-    var total       = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
-    for (var c = 0; c < a.length; c++){
-        for (var b = 0; b < a[c].Nilai.length; b++){
-        total[c] +=  a[c].Nilai[b]
+    // Get the modal
+    var modal = document.getElementById('id01');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
     }
-  
-    for(var x = 0; x < total.length; x++ ){
-        for( var z = 0; z < a[x].Nilai.length; z++){
-            meanMK1[x] = total[x] / a[x].Nilai.length;
-        }
-    }
+    
+    var mk1 = window.localStorage.getItem("MKA");
+    var mk2 = window.localStorage.getItem("MKB");
+    var mk3 = window.localStorage.getItem("MKC");
+    var mk4 = window.localStorage.getItem("MKD");
+    var mk5 = window.localStorage.getItem("MKE");
 
-    console.log(meanMK1)
-    window.localStorage.setItem("meannilai", JSON.stringify(meanMK1));
-    
-    
+    var MKMin= [mk1,mk2,mk3,mk4,mk5];
+    document.getElementById("MKA"+0).innerHTML = mk1;
+    document.getElementById("MKA"+1).innerHTML = mk2;
+    document.getElementById("MKA"+2).innerHTML = mk3;
+    document.getElementById("MKA"+3).innerHTML = mk4;
+    document.getElementById("MKA"+4).innerHTML = mk5;
 </script>
 
-<script>
-    // Nampilin Hasil dan Matakuliah Rekomendasi
-    var hasilnilai = [];
-    var matkulrek = [];
-    var hrek = [];
-    for(e = 0; e < 26 ; e++){
-        if(rekomendasi = true){
-            if(meanMK1[e] > 80 && meanMK1[e] <= 100){
-                hrek[e] = true;
-                hasilnilai[e] = "S Baik";
-                matkulrek[e] = "Algoritma II"
-            }
-            else if(meanMK1[e] > 70 && meanMK1[e] <= 79){
-                hrek[e] = true;
-                hasilnilai[e] = "Baik";
-                matkulrek[e] = "PBO II"
-            }
-            else if(meanMK1[e] > 56 && meanMK1[e] <= 69){
-                hrek[e] = true;
-                hasilnilai[e]= "Cukup";
-                matkulrek[e] = "Kalkulus Lanjut"
-            }
-            else if(meanMK1[e] > 45 && meanMK1[e] <= 55){
-                hrek[e] = false;
-                hasilnilai[e]= "Kurang";
-                matkulrek[e] = "Game Design"
-            }
-            else{
-                hrek[e] = false;
-                hasilnilai[e]= "S Kurang";
-                matkulrek[e] = "--"
-            }
-        }
-        else{
-            if(hasilnilai[e]==null){
-                hasilnilai[e] = "S.Kurang"
-            }
-            if(matkulrek[e]==null){
-                matkulrek[e] = "--"    
-            }
-        }
-        
-    }
-    
-    window.localStorage.setItem("hasilmhs", JSON.stringify(hasilnilai));
-    // console.log(hasilnilai)
-    window.localStorage.setItem("rek", JSON.stringify(matkulrek));
-    // console.log(matkulrek)
-    window.localStorage.setItem("hrek", JSON.stringify(hrek));
-    // console.log(hrek)
-
-    var mhs = JSON.parse($('#mhs').text());
-    $('#mhs').remove();
-    // console.log(uname)
-
-    var unamemhs = JSON.parse($('#unamemhs').text());
-    $('#unamemhs').remove();
-    // console.log(unamemhs)
-
-    //    Nampilin Nama Sesuai yang dipilih
-    var muncul = window.localStorage.getItem("pilihan");
-    // console.log(muncul)
-    
-    // Nampilin Nilai Rata
-    var nilairatamhs = window.localStorage.getItem("meannilai");
-    nilairatamhs = (nilairatamhs) ? JSON.parse(nilairatamhs) : [];
-    var hasilnilai = window.localStorage.getItem("hasilmhs");
-    hasilnilai = (hasilnilai) ? JSON.parse(hasilnilai) : [];
-    var rekmatkul = window.localStorage.getItem("rek");
-    rekmatkul = (rekmatkul) ? JSON.parse(rekmatkul) : [];
-    var hrek = window.localStorage.getItem("hrek");
-    hrek = (hrek) ? JSON.parse(hrek) : [];
-    
-    // console.log(nilairatamhs)
-    
-    for(var a = 0; a < mhs.length; a++){
-        if(mhs[a].name == unamemhs){
-            document.getElementById("prediksi").innerHTML = mhs[a].rekomendasi;
-            // console.log(mhs[a].name)
-            document.getElementById("meannilai").innerHTML = nilairatamhs[a];
-            document.getElementById("hasil").innerHTML = hasilnilai[a];
-            document.getElementById("rek").innerHTML = rekmatkul[a];
-            document.getElementById("hrek").innerHTML = hrek[a];
-        }     
-    }
-    // console.log(hasilnilai)
-    // console.log(rekmatkul)
-
-        
-</script>   
 </html>

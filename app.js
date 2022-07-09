@@ -8,7 +8,7 @@ var LocalStrategy = require("passport-local");
 var methodOverride = require("method-override");
 var indexRoutes = require("./Routes/Index");
 
-var schemaDataMhs = require("./models/ModelMhs");
+var schemaDataLogin = require("./models/ModelLogin");
 
 app.use(require("express-session")({
   secret: "Once again Rusty wins cutest dog!",
@@ -21,12 +21,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-passport.use(new LocalStrategy(schemaDataMhs.authenticate()));
-
+passport.use(new LocalStrategy(schemaDataLogin.authenticate()));
 
 // use static serialize and deserialize of model for passport session support
-passport.serializeUser(schemaDataMhs.serializeUser());
-passport.deserializeUser(schemaDataMhs.deserializeUser());
+passport.serializeUser(schemaDataLogin.serializeUser());
+passport.deserializeUser(schemaDataLogin.deserializeUser());
 
 // variables passed to every single template
 app.use(function(req, res, next) {

@@ -125,7 +125,7 @@ for (var c = 0; c < a.length; c++){
 
 for(var x = 0; x < total.length; x++ ){
     for( var z = 0; z < a[x].Nilai.length; z++){
-        meanMK1[x] = total[x] / a[x].Nilai.length
+        meanMK1[x] = Math.ceil(total[x] / a[x].Nilai.length)
     }
 }
 
@@ -134,9 +134,8 @@ for(var x = 0; x < total.length; x++ ){
 
 for(var x = 0; x < total.length; x++ ){
     for( var z = 0; z < a[x].Nilai.length; z++){
-        t[x].Nilai[z] =  a[x].Nilai[z] - meanMK1[x]   
+        t[x].Nilai[z] = Math.ceil(a[x].Nilai[z] - meanMK1[x])
     }
-
 }
 
 // console.log(t)
@@ -144,7 +143,7 @@ for(var x = 0; x < total.length; x++ ){
 
 for(var j = 0; j < a[0].Nilai.length; j++){
     for(var x = 0; x < a[0].Nilai.length; x++){
-        hasilx[j] = (t[0].Nilai[j] * t[1].Nilai[j])
+        hasilx[j] = Math.ceil((t[0].Nilai[j] * t[1].Nilai[j]))
     
         // hasil1[j] = (Math.sqrt(t[0].Nilai[j]*2))
         // hasil2[j] = (Math.sqrt(t[1].Nilai[j]*2))
@@ -152,33 +151,32 @@ for(var j = 0; j < a[0].Nilai.length; j++){
 }
 
 
-console.log(hasilx)
-console.log(hasil1)
-console.log(hasil2)
+// console.log(hasilx)
+// console.log(hasil1)
+// console.log(hasil2)
+
 
 
 for(var o = 0; o < total.length; o++ ){
     for( var h = 0; h < a[0].Nilai.length; h++){
-        sim[h] = (hasil1[o].Nilai/ hasil2[o].Nilai)*100
+        sim[h] = Math.ceil((hasil1[o].Nilai/ hasil2[o].Nilai))
     }
 }
 
 // console.log(sim)
 
-var x = 65 - 70
-Math.ceil(x)
-var y = 41 - 62
-Math.ceil(y)
+String.fromCharCode(num + 64);
 
-console.log(x)
-console.log(y)
-let totaltestx = x * y;
-let totaltest1 = x^2;
-let totaltest2 = y^2;
-let totaltesty = Math.ceil(Math.sqrt(x)*Math.sqrt(y));
-let totaltestakhir = Math.ceil(totaltestx/totaltesty);
-console.log(totaltestx)
-console.log(totaltest1)
-console.log(totaltest2)
-console.log(totaltesty)
-console.log(totaltestakhir)
+var nilaimhs = 90
+var nilaiabjad = ""
+
+if(nilaimhs == 90 && nilaimhs == 100){
+    nilaiabjad = "A"
+}
+
+if(nilaimhs == 50 && nilaimhs == 70){
+    nilaiabjad = "C"
+}
+
+console.log(nilaimhs)
+console.log(nilaiabjad)
