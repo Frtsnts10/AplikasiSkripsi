@@ -41,61 +41,59 @@ var a = [
   {
     Nama: "Mhs1",
     NIM: 1,
-    Kelompok: [
+    matkul: [
       {
-        Nama_Kel: "Data Science",
         MK: [
           {
+            Nama_Kel: "Data Science",
             Nama_MK: "Data Mining and Data Analytics",
             Nilai: 80,
             Hasil: "B",
           },
           {
+            Nama_Kel: "Data Science",
             Nama_MK: "Machine Learning",
-            Nilai: 88,
+            Nilai: 85,
             Hasil: "B",
           },
           {
+            Nama_Kel: "Data Science",
             Nama_MK: "Natural Language Processing",
-            Nilai: 0,
+            Nilai: 76,
             Hasil: "C",
           },
           {
-            Nama_MK: "Bussiness Process Re-Engineering",
-            Nilai: 62,
+            Nama_Kel: "Data Science",
+            Nama_MK: "Business Process Re-Engineering",
+            Nilai: 97,
             Hasil: "C",
           },
-        ],
-      },
-      {
-        Nama_Kel: "Intelligence Systems",
-        MK: [
           {
+            Nama_Kel: "Intelligence Systems",
             Nama_MK: "Artificial Neural Network",
-            Nilai: 80,
+            Nilai: 45,
             Hasil: "B",
           },
           {
+            Nama_Kel: "Intelligence Systems",
             Nama_MK: "Computer Vision",
-            Nilai: 65,
+            Nilai: 44,
             Hasil: "C",
           },
-        ],
-      },
-      {
-        Nama_Kel: "Game Development",
-        MK: [
           {
+            Nama_Kel: "Game Development",
             Nama_MK: "Game Development",
             Nilai: 80,
             Hasil: "B",
           },
           {
+            Nama_Kel: "Game Development",
             Nama_MK: "Game Design",
             Nilai: 0,
             Hasil: "C",
           },
           {
+            Nama_Kel: "Game Development",
             Nama_MK: "Java Programming",
             Nilai: 55,
             Hasil: "C",
@@ -107,63 +105,61 @@ var a = [
   {
     Nama: "Mhs2",
     NIM: 2,
-    Kelompok: [
+    matkul: [
       {
-        Nama_Kel: "Data Science",
         MK: [
           {
+            Nama_Kel: "Data Science",
             Nama_MK: "Data Mining and Data Analytics",
-            Nilai: 85,
+            Nilai: 53,
             Hasil: "B",
           },
           {
+            Nama_Kel: "Data Science",
             Nama_MK: "Machine Learning",
-            Nilai: 64,
-            Hasil: "C",
+            Nilai: 41,
+            Hasil: "B",
           },
           {
+            Nama_Kel: "Data Science",
             Nama_MK: "Natural Language Processing",
-            Nilai: 75,
-            Hasil: "C",
-          },
-          {
-            Nama_MK: "Bussiness Process Re-Engineering",
-            Nilai: 60,
-            Hasil: "C",
-          },
-        ],
-      },
-      {
-        Nama_Kel: "Intelligence Systems",
-        MK: [
-          {
-            Nama_MK: "Artificial Neural Network",
             Nilai: 63,
             Hasil: "C",
           },
           {
+            Nama_Kel: "Data Science",
+            Nama_MK: "Business Process Re-Engineering",
+            Nilai: 64,
+            Hasil: "C",
+          },
+          {
+            Nama_Kel: "Intelligence Systems",
+            Nama_MK: "Artificial Neural Network",
+            Nilai: 0,
+            Hasil: "B",
+          },
+          {
+            Nama_Kel: "Intelligence Systems",
             Nama_MK: "Computer Vision",
-            Nilai: 41,
-            Hasil: "D",
-          },
-        ],
-      },
-      {
-        Nama_Kel: "Game Development",
-        MK: [
-          {
-            Nama_MK: "Game Development",
-            Nilai: 71,
-            Hasil: "C",
-          },
-          {
-            Nama_MK: "Game Design",
-            Nilai: 56,
-            Hasil: "C",
-          },
-          {
-            Nama_MK: "Java Programming",
             Nilai: 55,
+            Hasil: "C",
+          },
+          {
+            Nama_Kel: "Game Development",
+            Nama_MK: "Game Development",
+            Nilai: 81,
+            Hasil: "B",
+          },
+          {
+            Nama_Kel: "Game Development",
+            Nama_MK: "Game Design",
+            Nilai: 77,
+            Hasil: "C",
+          },
+          {
+            Nama_Kel: "Game Development",
+            Nama_MK: "Java Programming",
+            Nilai: 79,
             Hasil: "C",
           },
         ],
@@ -171,233 +167,321 @@ var a = [
     ],
   },
   {
-    Nama: "Mhs3",
-    NIM: 3,
-    Kelompok: [
+    Nama: "Mhs1",
+    NIM: 1,
+    matkul: [
       {
-        Nama_Kel: "Data Science",
         MK: [
           {
+            Nama_Kel: "Data Science",
             Nama_MK: "Data Mining and Data Analytics",
-            Nilai: 95,
-            Hasil: "A",
+            Nilai: 35,
+            Hasil: "B",
           },
           {
+            Nama_Kel: "Data Science",
             Nama_MK: "Machine Learning",
-            Nilai: 70,
-            Hasil: "C",
+            Nilai: 57,
+            Hasil: "B",
           },
           {
+            Nama_Kel: "Data Science",
             Nama_MK: "Natural Language Processing",
-            Nilai: 78,
-            Hasil: "B",
-          },
-          {
-            Nama_MK: "Bussiness Process Re-Engineering",
-            Nilai: 55,
-            Hasil: "B",
-          },
-        ],
-      },
-      {
-        Nama_Kel: "Intelligence Systems",
-        MK: [
-          {
-            Nama_MK: "Artificial Neural Network",
-            Nilai: 72,
-            Hasil: "B",
-          },
-          {
-            Nama_MK: "Computer Vision",
-            Nilai: 76,
-            Hasil: "B",
-          },
-        ],
-      },
-      {
-        Nama_Kel: "Game Development",
-        MK: [
-          {
-            Nama_MK: "Game Development",
-            Nilai: 42,
-            Hasil: "D",
-          },
-          {
-            Nama_MK: "Game Design",
-            Nilai: 56,
+            Nilai: 59,
             Hasil: "C",
           },
           {
+            Nama_Kel: "Data Science",
+            Nama_MK: "Business Process Re-Engineering",
+            Nilai: 47,
+            Hasil: "C",
+          },
+          {
+            Nama_Kel: "Intelligence Systems",
+            Nama_MK: "Artificial Neural Network",
+            Nilai: 75,
+            Hasil: "B",
+          },
+          {
+            Nama_Kel: "Intelligence Systems",
+            Nama_MK: "Computer Vision",
+            Nilai: 79,
+            Hasil: "C",
+          },
+          {
+            Nama_Kel: "Game Development",
+            Nama_MK: "Game Development",
+            Nilai: 87,
+            Hasil: "B",
+          },
+          {
+            Nama_Kel: "Game Development",
+            Nama_MK: "Game Design",
+            Nilai: 63,
+            Hasil: "C",
+          },
+          {
+            Nama_Kel: "Game Development",
             Nama_MK: "Java Programming",
-            Nilai: 59,
+            Nilai: 89,
             Hasil: "C",
           },
         ],
       },
     ],
   },
+  {
+    Nama: "Mhs1",
+    NIM: 1,
+    matkul: [
+      {
+        MK: [
+          {
+            Nama_Kel: "Data Science",
+            Nama_MK: "Data Mining and Data Analytics",
+            Nilai: 69,
+            Hasil: "B",
+          },
+          {
+            Nama_Kel: "Data Science",
+            Nama_MK: "Machine Learning",
+            Nilai: 65,
+            Hasil: "B",
+          },
+          {
+            Nama_Kel: "Data Science",
+            Nama_MK: "Natural Language Processing",
+            Nilai: 88,
+            Hasil: "C",
+          },
+          {
+            Nama_Kel: "Data Science",
+            Nama_MK: "Business Process Re-Engineering",
+            Nilai: 81,
+            Hasil: "C",
+          },
+          {
+            Nama_Kel: "Intelligence Systems",
+            Nama_MK: "Artificial Neural Network",
+            Nilai: 66,
+            Hasil: "B",
+          },
+          {
+            Nama_Kel: "Intelligence Systems",
+            Nama_MK: "Computer Vision",
+            Nilai: 67,
+            Hasil: "C",
+          },
+          {
+            Nama_Kel: "Game Development",
+            Nama_MK: "Game Development",
+            Nilai: 73,
+            Hasil: "B",
+          },
+          {
+            Nama_Kel: "Game Development",
+            Nama_MK: "Game Design",
+            Nilai: 98,
+            Hasil: "C",
+          },
+          {
+            Nama_Kel: "Game Development",
+            Nama_MK: "Java Programming",
+            Nilai: 63,
+            Hasil: "C",
+          },
+        ],
+      },
+    ],
+  }
 ];
 
-console.log(a);
+// console.log(a);
+
+var totalKel = [0, 0, 0];
+var rataKel = [0, 0, 0];
+
+var totalMhs = [0, 0];
+var rataMhs = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 var totalMK = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var rataMK = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-var totalMhs = [0, 0, 0];
-var rataMhs = [0, 0, 0];
 
-var nilaimhs = {
-  M1: [0],
-  M2: [0],
-  M3: [0],
+var nilaibaru = {
+  M1: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  M2: [0, 0, 0, 0, 0, 0, 0, 0, 0],
 };
+
 var hasil1 = {
-  A: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  M11: [0, 0, 0, 0, 0],
+  M12: [0, 0, 0, 0, 0],
+  M13: [0, 0, 0, 0, 0],
+  M14: [0, 0, 0, 0, 0],
+  M15: [0, 0, 0, 0, 0],
+};
+var hasil2 = {
+  K21: [0, 0, 0, 0, 0],
+  K22: [0, 0, 0, 0, 0],
+  K23: [0, 0, 0, 0, 0],
+  K24: [0, 0, 0, 0, 0],
+  K25: [0, 0, 0, 0, 0]
+};
+var hasil3 = {
+  K31: [0, 0, 0, 0, 0],
+  K32: [0, 0, 0, 0, 0],
+  K33: [0, 0, 0, 0, 0],
+  K34: [0, 0, 0, 0, 0],
+  K35: [0, 0, 0, 0, 0],
+};
+var hasil4 = {
+  K41: [0, 0, 0, 0, 0],
+  K42: [0, 0, 0, 0, 0],
+  K43: [0, 0, 0, 0, 0],
+  K44: [0, 0, 0, 0, 0],
+  K45: [0, 0, 0, 0, 0],
+};
+var hasil5 = {
+  K51: [0, 0, 0, 0, 0],
+  K52: [0, 0, 0, 0, 0],
+  K53: [0, 0, 0, 0, 0],
+  K54: [0, 0, 0, 0, 0],
+  K55: [0, 0, 0, 0, 0],
 };
 
-
-// // total nilai MK
-// for (var c = 0; c < a.length; c++) {
-//   for (var b = 0; b < a[c].Kelompok.length; b++) {
-//     for (var d = 0; d < a[c].Kelompok[b].MK.length; d++) {
-//       totaltest[c] =totaltest[c] + a[c].Kelompok[b].MK[d].Nilai;
-//     }
-//   }
-// }
-
-// console.log(totaltest)
-
-// for (var c=0; c < a.length; c++){
-//   ratacek[c] = totaltest[c]/(a[c].Kelompok[0].MK.length+a[c].Kelompok[1].MK.length+a[c].Kelompok[2].MK.length)
-//   }
-
-// total nilai MK
+// total nilai Kel
 for (var c = 0; c < a.length; c++) {
-  for (var b = 0; b < a[c].Kelompok.length; b++) {
-    for (var d = 0; d < a[c].Kelompok[b].MK.length; d++) {
-      if (a[c].Kelompok[b].MK[d].Nama_MK == "Data Mining and Data Analytics") {
-        totalMK[0] = totalMK[0] + a[c].Kelompok[b].MK[d].Nilai;
-      } else if (a[c].Kelompok[b].MK[d].Nama_MK == "Machine Learning") {
-        totalMK[1] = totalMK[1] + a[c].Kelompok[b].MK[d].Nilai;
-      } else if (a[c].Kelompok[b].MK[d].Nama_MK == "Natural Language Processing") {
-        totalMK[2] = totalMK[2] + a[c].Kelompok[b].MK[d].Nilai;
-      } else if (a[c].Kelompok[b].MK[d].Nama_MK == "Bussiness Process Re-Engineering") {
-        totalMK[3] = totalMK[3] + a[c].Kelompok[b].MK[d].Nilai;
-      } else if (a[c].Kelompok[b].MK[d].Nama_MK == "Artificial Neural Network") {
-        totalMK[4] = totalMK[4] + a[c].Kelompok[b].MK[d].Nilai;
-      } else if (a[c].Kelompok[b].MK[d].Nama_MK == "Computer Vision") {
-        totalMK[5] = totalMK[5] + a[c].Kelompok[b].MK[d].Nilai;
-      } else if (a[c].Kelompok[b].MK[d].Nama_MK == "Game Development") {
-        totalMK[6] = totalMK[6] + a[c].Kelompok[b].MK[d].Nilai;
-      } else if (a[c].Kelompok[b].MK[d].Nama_MK == "Game Design") {
-        totalMK[7] = totalMK[7] + a[c].Kelompok[b].MK[d].Nilai;
-      } else if (a[c].Kelompok[b].MK[d].Nama_MK == "Java Programming") {
-        totalMK[8] = totalMK[8] + a[c].Kelompok[b].MK[d].Nilai;
+  for (var b = 0; b < a[c].matkul.length; b++) {
+    for (var d = 0; d < a[c].matkul[b].MK.length; d++) {
+      if (a[c].matkul[b].MK[d].Nama_Kel == "Data Science") {
+        totalKel[0] = totalKel[0] + a[c].matkul[b].MK[d].Nilai;
+      } else if (a[c].matkul[b].MK[d].Nama_Kel == "Intelligence Systems") {
+        totalKel[1] = totalKel[1] + a[c].matkul[b].MK[d].Nilai;
+      } else if (a[c].matkul[b].MK[d].Nama_Kel == "Game Development") {
+        totalKel[2] = totalKel[2] + a[c].matkul[b].MK[d].Nilai;
       }
     }
   }
 }
 
-console.log(totalMK);
+// rata-Nilai Kel
+for (var c = 0; c < 3; c++) {
+  rataKel[c] = Math.ceil(totalKel[c] / 3);
+}
 
-// rata-rata MK
+// total nilai MK
+for (var c = 0; c < a.length; c++) {
+  for (var b = 0; b < a[c].matkul.length; b++) {
+    for (var d = 0; d < a[c].matkul[b].MK.length; d++) {
+      if (a[c].matkul[b].MK[d].Nama_MK == "Data Mining and Data Analytics") {
+        totalMK[0] = totalMK[0] + a[c].matkul[b].MK[d].Nilai;
+      } else if (a[c].matkul[b].MK[d].Nama_MK == "Machine Learning") {
+        totalMK[1] = totalMK[1] + a[c].matkul[b].MK[d].Nilai;
+      } else if (a[c].matkul[b].MK[d].Nama_MK == "Natural Language Processing") {
+        totalMK[2] = totalMK[2] + a[c].matkul[b].MK[d].Nilai;
+      } else if (a[c].matkul[b].MK[d].Nama_MK == "Business Process Re-Engineering") {
+        totalMK[3] = totalMK[3] + a[c].matkul[b].MK[d].Nilai;
+      } else if (a[c].matkul[b].MK[d].Nama_MK == "Artificial Neural Network") {
+        totalMK[4] = totalMK[4] + a[c].matkul[b].MK[d].Nilai;
+      } else if (a[c].matkul[b].MK[d].Nama_MK == "Computer Vision") {
+        totalMK[5] = totalMK[5] + a[c].matkul[b].MK[d].Nilai;
+      } else if (a[c].matkul[b].MK[d].Nama_MK == "Game Development") {
+        totalMK[6] = totalMK[6] + a[c].matkul[b].MK[d].Nilai;
+      } else if (a[c].matkul[b].MK[d].Nama_MK == "Game Design") {
+        totalMK[7] = totalMK[7] + a[c].matkul[b].MK[d].Nilai;
+      } else if (a[c].matkul[b].MK[d].Nama_MK == "Java Programming") {
+        totalMK[8] = totalMK[8] + a[c].matkul[b].MK[d].Nilai;
+      }
+    }
+  }
+}
+
+// rata-Nilai MK
 for (var c = 0; c < 9; c++) {
   rataMK[c] = Math.ceil(totalMK[c] / a.length);
 }
 
-console.log(rataMK)
 
-//total nilai MHs
+// total nilai Mhs
 for (var c = 0; c < a.length; c++) {
-  for (var b = 0; b < a[c].Kelompok.length; b++) {
-    for (var d = 0; d < a[c].Kelompok[b].MK.length; d++) {
+  for (var b = 0; b < a[c].matkul.length; b++) {
+    for (var d = 0; d < a[c].matkul[b].MK.length; d++) {
       if (a[c].Nama == "Mhs1") {
-        totalMhs[0] = totalMhs[0] + a[c].Kelompok[b].MK[d].Nilai;
-      } else if (a[c].Nama == "Mhs2") {
-        totalMhs[1] = totalMhs[1] + a[c].Kelompok[b].MK[d].Nilai;
-      } else if (a[c].Nama == "Mhs3") {
-        totalMhs[2] = totalMhs[2] + a[c].Kelompok[b].MK[d].Nilai;
-      }
+        totalMhs[0] = totalMhs[0] + a[c].matkul[b].MK[d].Nilai;
+      } 
+      if (a[c].Nama == "Mhs2") {
+        totalMhs[1] = totalMhs[1] + a[c].matkul[b].MK[d].Nilai;
+      } 
     }
   }
 }
+
+// rata-Nilai Mhs
+for (var c = 0; c < 9; c++) {
+  rataMhs[c] = Math.ceil(totalMhs[c] / 9);
+}
+
+console.log(totalKel);
+console.log(rataKel);
+
+console.log(totalMK);
+console.log(rataMK);
 
 console.log(totalMhs);
-
-// rata-rata Mhs
-for (var c = 0; c < a.length; c++) {
-  rataMhs[c] = Math.ceil( totalMhs[c] / (a[c].Kelompok[0].MK.length + a[c].Kelompok[1].MK.length + a[c].Kelompok[2].MK.length)
-  );
-}
-
 console.log(rataMhs);
 
-// nilai baru
+// nilai baru Mhs
 for (var c = 0; c < a.length; c++) {
-  for (var b = 0; b < a[c].Kelompok.length; b++) {
-    for (var d = 0; d < a[c].Kelompok[b].MK.length; d++) {
-      if (c == 0) {
-        if (b == 0) {
-          nilaimhs.M1[d] = a[c].Kelompok[b].MK[d].Nilai - rataMhs[c];
-        } else if (b == 1) {
-          nilaimhs.M1[d + 4] = a[c].Kelompok[b].MK[d].Nilai - rataMhs[c];
-        } else if (b == 2) {
-          nilaimhs.M1[d + 6] = a[c].Kelompok[b].MK[d].Nilai - rataMhs[c];
-        }
-      } else if (c == 1) {
-        if (b == 0) {
-          nilaimhs.M2[d] = a[c].Kelompok[b].MK[d].Nilai - rataMhs[c];
-        } else if (b == 1) {
-          nilaimhs.M2[d + 4] = a[c].Kelompok[b].MK[d].Nilai - rataMhs[c];
-        } else if (b == 2) {
-          nilaimhs.M2[d + 6] = a[c].Kelompok[b].MK[d].Nilai - rataMhs[c];
-        }
-      } else if (c == 2) {
-        if (b == 0) {
-          nilaimhs.M3[d] = a[c].Kelompok[b].MK[d].Nilai - rataMhs[c];
-        } else if (b == 1) {
-          nilaimhs.M3[d + 4] = a[c].Kelompok[b].MK[d].Nilai - rataMhs[c];
-        } else if (b == 2) {
-          nilaimhs.M3[d + 6] = a[c].Kelompok[b].MK[d].Nilai - rataMhs[c];
-        }
-      }
+  for (var b = 0; b < a[c].matkul.length; b++) {
+    for (var d = 0; d < a[c].matkul[b].MK.length; d++) {
+      if (d == 0) {
+        nilaibaru.M1[c] = (a[c].matkul[b].MK[d].Hasil - rataMhs[d]);
+      } else if (d == 1) {
+        nilaibaru.M2[c] = (a[c].matkul[b].MK[d].Hasil - rataMhs[d]);
+      } 
+      // else if (d == 2) {
+      //   nilaibaru.K3[c] = (a[c].matkul[b].MK[d].Hasil - rataMhs[d]);
+      // } else if (d == 3) {
+      //   nilaibaru.K4[c] = (a[c].matkul[b].MK[d].Hasil - rataMhs[d]);
+      // } else if (d == 4) {
+      //   nilaibaru.K5[c] = (a[c].matkul[b].MK[d].Hasil - rata[d]);
+      // }
     }
   }
 }
-console.log(nilaimhs);
+
+console.log(nilaibaru);
 
 // // perkallian antar nilai (a*a, a*b, dst)
-for (var c = 0; c < a.length; c++) {
-  for (var b = 0; b < a[c].Kelompok.length; b++) {
-    for (var c = 0; c < a[c].Kelompok[b].MK.length; c++) {
-        hasil1.A[c] = nilaimhs.M1[c] * nilaimhs.M1[c]
-        hasil1.B[c] = nilaimhs.M2[c] * nilaimhs.M2[c]
-    }
-  }
+for (var d = 0; d < nilaibaru.M1.length; d++) { 
+    Nilai1.K11[d] = (nilaibaru.K1[d] * nilaibaru.K1[d]);
+    hasil1.K12[d] = (nilaibaru.K1[d] * nilaibaru.K2[d]);
+    hasil1.K13[d] = (nilaibaru.K1[d] * nilaibaru.K3[d]);
+    hasil1.K14[d] = (nilaibaru.K1[d] * nilaibaru.K4[d]);
+    hasil1.K15[d] = (nilaibaru.K1[d] * nilaibaru.K5[d]);
 }
-console.log(hasil1)
-// for (var d = 0; d < nilaibaru.K2.length; d++) {
+// for (var d = 0; d < nilaibaru.K2.length; d++) { 
 //     hasil2.K21[d] = (nilaibaru.K2[d] * nilaibaru.K1[d]);
 //     hasil2.K22[d] = (nilaibaru.K2[d] * nilaibaru.K2[d]);
 //     hasil2.K23[d] = (nilaibaru.K2[d] * nilaibaru.K3[d]);
 //     hasil2.K24[d] = (nilaibaru.K2[d] * nilaibaru.K4[d]);
 //     hasil2.K25[d] = (nilaibaru.K2[d] * nilaibaru.K5[d]);
 // }
-// for (var d = 0; d < nilaibaru.K3.length; d++) {
+// for (var d = 0; d < nilaibaru.K3.length; d++) { 
 //     hasil3.K31[d] = (nilaibaru.K3[d] * nilaibaru.K1[d]);
 //     hasil3.K32[d] = (nilaibaru.K3[d] * nilaibaru.K2[d]);
 //     hasil3.K33[d] = (nilaibaru.K3[d] * nilaibaru.K3[d]);
 //     hasil3.K34[d] = (nilaibaru.K3[d] * nilaibaru.K4[d]);
 //     hasil3.K35[d] = (nilaibaru.K3[d] * nilaibaru.K5[d]);
 // }
-// for (var d = 0; d < nilaibaru.K4.length; d++) {
+// for (var d = 0; d < nilaibaru.K4.length; d++) { 
 //     hasil4.K41[d] = (nilaibaru.K4[d] * nilaibaru.K1[d]);
 //     hasil4.K42[d] = (nilaibaru.K4[d] * nilaibaru.K2[d]);
 //     hasil4.K43[d] = (nilaibaru.K4[d] * nilaibaru.K3[d]);
 //     hasil4.K44[d] = (nilaibaru.K4[d] * nilaibaru.K4[d]);
 //     hasil4.K45[d] = (nilaibaru.K4[d] * nilaibaru.K5[d]);
 // }
-// for (var d = 0; d < nilaibaru.K5.length; d++) {
+// for (var d = 0; d < nilaibaru.K5.length; d++) { 
 //     hasil5.K51[d] = (nilaibaru.K5[d] * nilaibaru.K1[d]);
 //     hasil5.K52[d] = (nilaibaru.K5[d] * nilaibaru.K2[d]);
 //     hasil5.K53[d] = (nilaibaru.K5[d] * nilaibaru.K3[d]);
@@ -424,35 +508,35 @@ console.log(hasil1)
 //     totalK13 = totalK13+ hasil1.K13[d]
 //     totalK14 = totalK14+ hasil1.K14[d]
 //     totalK15 = totalK15+ hasil1.K15[d]
-// }
+// } 
 // for (var d = 0; d < hasil2.K21.length;d++) {
 //     totalK21 = totalK21+ hasil2.K21[d]
 //     totalK22 = totalK22+ hasil2.K22[d]
 //     totalK23 = totalK23+ hasil2.K23[d]
 //     totalK24 = totalK24+ hasil2.K24[d]
 //     totalK25 = totalK25+ hasil2.K25[d]
-// }
+// } 
 // for (var d = 0; d < hasil3.K31.length;d++) {
 //     totalK31 = totalK31+ hasil3.K31[d]
 //     totalK32 = totalK32+ hasil3.K32[d]
 //     totalK33 = totalK33+ hasil3.K33[d]
 //     totalK34 = totalK34+ hasil3.K34[d]
 //     totalK35 = totalK35+ hasil3.K35[d]
-// }
+// } 
 // for (var d = 0; d < hasil4.K41.length;d++) {
 //     totalK41 = totalK41+ hasil4.K41[d]
 //     totalK42 = totalK42+ hasil4.K42[d]
 //     totalK43 = totalK43+ hasil4.K43[d]
 //     totalK44 = totalK44+ hasil4.K44[d]
 //     totalK45 = totalK45+ hasil4.K45[d]
-// }
+// } 
 // for (var d = 0; d < hasil5.K51.length;d++) {
 //     totalK51 = totalK51+ hasil5.K51[d]
 //     totalK52 = totalK52+ hasil5.K52[d]
 //     totalK53 = totalK53+ hasil5.K53[d]
 //     totalK54 = totalK54+ hasil5.K54[d]
 //     totalK55 = totalK55+ hasil5.K55[d]
-// }
+// } 
 
 // console.log(totalK11)
 // // console.log(totalK12)
@@ -464,7 +548,7 @@ console.log(hasil1)
 //     KA3 = Math.sqrt(totalK13)
 //     KA4 = Math.sqrt(totalK14)
 //     KA5 = Math.sqrt(totalK15)
-// }
+// } 
 
 // // console.log(KA1)
 // // console.log(KA2)
@@ -526,6 +610,8 @@ console.log(hasil1)
 //     var sumSim5 = Math.abs(simK51+simK52+simK53+simK54+simK55)
 // }
 
+
+
 // var prediksiK11 = 0; var prediksiK12 = 0; var prediksiK13 = 0; var prediksiK14 = 0; var prediksiK15 = 0;
 // var prediksiK21 = 0; var prediksiK22 = 0; var prediksiK23 = 0; var prediksiK24 = 0; var prediksiK25 = 0;
 // var prediksiK31 = 0; var prediksiK32 = 0; var prediksiK33 = 0; var prediksiK34 = 0; var prediksiK35 = 0;
@@ -554,7 +640,7 @@ console.log(hasil1)
 //     prediksiK23 = (nilaibaru.K1[d] * simK31)+(nilaibaru.K2[d] * simK32)+(nilaibaru.K3[d] * simK33)+(nilaibaru.K4[d] * simK34)+(nilaibaru.K5[d] * simK35)
 //     prediksiK33 = (nilaibaru.K1[d] * simK31)+(nilaibaru.K2[d] * simK32)+(nilaibaru.K3[d] * simK33)+(nilaibaru.K4[d] * simK34)+(nilaibaru.K5[d] * simK35)
 //     prediksiK43 = (nilaibaru.K1[d] * simK31)+(nilaibaru.K2[d] * simK32)+(nilaibaru.K3[d] * simK33)+(nilaibaru.K4[d] * simK34)+(nilaibaru.K5[d] * simK35)
-//     prediksiK53 = (nilaibaru.K1[d] * simK31)+(nilaibaru.K2[d] * simK32)+(nilaibaru.K3[d] * simK33)+(nilaibaru.K4[d] * simK34)+(nilaibaru.K5[d] * simK35)
+//     prediksiK53 = (nilaibaru.K1[d] * simK31)+(nilaibaru.K2[d] * simK32)+(nilaibaru.K3[d] * simK33)+(nilaibaru.K4[d] * simK34)+(nilaibaru.K5[d] * simK35) 
 // }
 
 // for (var d = 0; d < nilaibaru.K4.length;d++) {
@@ -611,7 +697,7 @@ console.log(hasil1)
 //     MAEK31 = PK31 - nilaibaru.K3[d]
 //     MAEK41 = PK41 - nilaibaru.K4[d]
 //     MAEK51 = PK51 - nilaibaru.K5[d]
-
+    
 //     MAEK12 = PK12 - nilaibaru.K1[d]
 //     MAEK22 = PK22 - nilaibaru.K2[d]
 //     MAEK32 = PK32 - nilaibaru.K3[d]
