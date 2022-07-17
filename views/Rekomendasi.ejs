@@ -1,198 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
-    <title>Cek Rekomendasi | Aplikasi Prediksi Nilai dan Rekomendasi MataKuliah</title>
-</head>
+    <title>
+      Cek Rekomendasi | Aplikasi Prediksi Nilai dan Rekomendasi MataKuliah
+    </title>
+  </head>
 
-<style>
- 
-    .navbar{
+  <style>
+    .chsbutton {
+        width: 20%;
+        background-color: #150754;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px 0px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+    }
+   
+    .button2:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+    };
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f0f2f5;
+      color: #1c1e21;
+    }
+
+    .navbar {
       display: flex;
       height: 80px;
       text-align: center;
       justify-content: center;
     }
-    .logo-image{
+    .logo-image {
       position: absolute;
       left: 0px;
       width: 46px;
       height: 46px;
     }
-    .title{
+    .title {
       position: absolute;
-      top:10px;
+      top: 10px;
       width: 500px;
       font-size: 20px;
-    } 
-
-    .dropbtn {
-        background-color: #04AA6D;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
     }
 
-    .dropbtn:hover, .dropbtn:focus {
-        background-color: #3e8e41;
+    .dropbtn {
+      background-color: #04aa6d;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropbtn:hover,
+    .dropbtn:focus {
+      background-color: #3e8e41;
     }
 
     .dropdown {
-        float: right;
-        position: relative;
-        display: inline-block;
+      float: right;
+      position: relative;
+      display: inline-block;
     }
 
     .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        right: 0;
-        z-index: 1;
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      right: 0;
+      z-index: 1;
     }
 
     .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
     }
 
-    .dropdown a:hover {background-color: #ddd;}
+    .dropdown a:hover {
+      background-color: #ddd;
+    }
 
-    .show {display: block;}
+    .show {
+      display: block;
+    }
 
     table {
-        margin: auto;
-        text-align: center;
-        justify-content: center;
-        border: 1px solid black;
-        width:65%;
-        border-spacing: 30px;
-        border-collapse:collapse;
-
+      margin: auto;
+      text-align: center;
+      justify-content: center;
+      border: 1px solid black;
+      width: 65%;
+      border-spacing: 30px;
+      border-collapse: collapse;
     }
-    th{
-        border: 1px solid black;
-        margin: auto;
-        text-align: center;
-        justify-content: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        background: black;
-        color: white;
-        
-
+    th {
+      border: 1px solid black;
+      margin: auto;
+      text-align: center;
+      justify-content: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
+      background: black;
+      color: white;
     }
-    td{
-        border: 1px solid black;
-        width: 30%;
-        justify-content: center;
-        text-align: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
+    td {
+      border: 1px solid black;
+      width: 30%;
+      justify-content: center;
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
 
     /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
-  height: 50%;
-}
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0); /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+      padding-top: 60px;
+    }
 
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #888;
+      width: 50%; /* Could be more or less, depending on screen size */
+      height: 50%;
+    }
 
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
+    /* The Close Button (x) */
+    .close {
+      position: absolute;
+      right: 25px;
+      top: 0;
+      color: #000;
+      font-size: 35px;
+      font-weight: bold;
+    }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
+    .close:hover,
+    .close:focus {
+      color: red;
+      cursor: pointer;
+    }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
+    /* Add Zoom Animation */
+    .animate {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s;
+    }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
+    @-webkit-keyframes animatezoom {
+      from {
+        -webkit-transform: scale(0);
+      }
+      to {
+        -webkit-transform: scale(1);
+      }
+    }
 
+    @keyframes animatezoom {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
 
-<body style="background-image: url(bg.png); background-size: cover;">
-    
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+      span.psw {
+        display: block;
+        float: none;
+      }
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <body style="background-image: url(bg.png); background-size: cover">
     <!-- Header -->
-    <header class="w3-container w3-center" style="padding:10px 16px;justify-content: center; text-align: center; margin: auto;">
-        <img src="Logo.jpg"  width="250"><br>
-        <h1 class="w3-margin" style="color: black; font-weight: bolder; margin: auto;justify-content: center;text-align: center;">Cek Rekomendasi Matakuliah</h1>
+    <header
+      class="w3-container w3-center"
+      style="
+        padding: 10px 16px;
+        justify-content: center;
+        text-align: center;
+        margin: auto;
+      "
+    >
+      <img src="Logo.jpg" width="250" /><br />
+      <h1
+        class="w3-margin"
+        style="
+          color: black;
+          font-weight: bolder;
+          margin: auto;
+          justify-content: center;
+          text-align: center;
+        "
+      >
+        Cek Rekomendasi Matakuliah
+      </h1>
     </header>
 
-    
-    <div class="body-form" style="margin: auto; justify-content: center; padding-left: 20%; padding-right: 20%;">
-        <a href="IndexMhs">Kembali</a>
-        <div style="padding-top: 5%; border-radius: 10px; height: auto; margin: auto;">
-            
+    <div
+      class="body-form"
+      style="
+        margin: auto;
+        justify-content: center;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 2%;
+        height: auto;
+      "
+    >
+      <a href="IndexMhs">Kembali</a>
+      <!-- <div style="padding-top: 5%; height: auto; margin: auto;">
             <table>
                 <tr>
                     <th colspan="1"> Matakuliah Rekomendasi</th>
@@ -200,98 +283,131 @@
                     <th colspan="1"> Hasil Rekomendasi</th>
                     <th colspan="1"> Kelompok Rekomendasi</th>
                 </tr>
-           
-                <tr>
-                    <% var mk= ["Data Mining", "Machine Learning",""] %>
-                    <% var kel= ["Data Science","",""] %>
-            
-                    <% for(var a=0; a < datalist.length;a++) { %>
-                        <% for(var b=0; b < datalist[a].matkul.length;b++) { %>
-                            
-                            <% if(datalist[a].Nama == currentUser.username){ %>
-                                <td><%= datalist[a].matkul[b].nama_MK %></td>
-                                <% var d="MKA"+b  %>
-                                <td id="<%= d %>"></td>
-                                <td ><%= datalist[a].Hasil[0].Rekomendasi1[b]  %></td>
-                                <td><%= datalist[a].Hasil[1].Kelompok[b]  %></td>
-                                <% } %>
-                            </tr>                           
-                            
-                            
-                        <% } %>
-                        
-                    <% } %>
             </table>
-            
-            <!-- <td><button onclick="document.getElementById('id01').style.display='block'">Lihat</button></td> -->
-        </div>
+            <td><button onclick="document.getElementById('id01').style.display='block'">Lihat</button></td>
+        </div> -->
 
+      <div style="margin: auto; text-align: center; justify-content: center">
+        <h4>
+          Pilihan Matakuliah 1 yang ingin diambil :
+          <select name="" id="pilihan1" style="display: flexbox" onchange="handleSelectChange(event)">
+            <option value="">     Pilih Kelompok     </option>
+            <!-- <optgroup label="       Data Science      ">
+              <option value="Data Mining and Data Analytics">Data Mining and Data Analytics</option>
+              <option value="Machine Learning">Machine Learning</option>
+              <option value="Natural Language Processing">Natural Language Processing</option>
+              <option value="Business Process Re-Engineering">Business Process Re-Engineering</option>
+            </optgroup> -->
+
+            <option value="Data Science">Data Science</option>
+            <option value="Intelligence Systems">Intelligence Systems</option>
+            <option value="Game Development">Game Development</option>
+            <option value="Advance Programming">Advanced Programming</option>
+          </select>
+        </h4>
+      </div>
+
+      <div
+        style="
+          justify-content: center;
+          text-align: center;
+          margin: auto;
+          padding-top: 2%;
+        "
+      >
+        <button class="chsbutton button2"  onclick="window.location='/HasilRek'">
+          Cek Hasil Rekomendasi
+        </button>
+      </div>
     </div>
 
+ 
 
-    <!-- <div id="id01" class="modal" style="margin: auto; justify-content: center; text-align: center; padding-top: 15%;">
+  </body>
 
-        <form class="modal-content animate" action="" style="text-align: center; margin: auto;">
-            <div style="padding-top: 5%;">
-                <table>
-                    <tr>
-                        <th colspan="3"> Similarity</th>
-                        <th colspan="3"> MAE</th>
-                    </tr>
-                    <tr>
+  <span id="usr" hidden><%= JSON.stringify(datalist) %></span>
+
+  <script>
+    var usr = JSON.parse($('#usr').text());
+    $('#usr').remove();
+    console.log(usr)
+
+    // // Get the modal
+    // var modal = document.getElementById("id01");
+
+    // // When the user clicks anywhere outside of the modal, close it
+    // window.onclick = function (event) {
+    //   if (event.target == modal) {
+    //     modal.style.display = "none";
+    //   }
+    // };
+
+    function handleSelectChange(event) {
+      var selectElement = event.target;
+      var value = selectElement.value;
+      if(value=="Data Science"){
+        var index="Data Science";
+      } else if(value=="Intelligence Systems"){
+        var index="Intelligent Systems";
+      } else if(value=="Game Development"){
+        var index="Game Development";
+      } else{
+        var index="Advanced Programming";
+      }
+
+      window.localStorage.setItem("KelompokMK", index);
+      // window.localStorage.setItem("Matkul", value);
+      console.log(index);
+      // console.log(value);
+    }
+  </script>
+
+  <script>
     
-                    </tr>
-                    <tr>       
-                        <% for(var a=0; a < datalist.length;a++) { %>
-                            <% for(var b=0; b < datalist[a].matkul.length;b++) { %>
-                                <% if(datalist[a].Nama == currentUser.username){ %>
-                                    <td colspan="3"><%= datalist[a].matkul[b].hasil%></td>
-                                    <td colspan="3"></td>
-                                    <td colspan="3"></td>
-                                    <td colspan="3"></td>
-                                    <td colspan="3"></td>
-                                    <td colspan="3"></td>
-                                </tr>
-                                <% } %>
-                            <% } %>
-                        <% } %>
-                </table>
+    var MK1 = window.localStorage.getItem("ANN");
+    var HMk1 = window.localStorage.getItem("HMk1");
 
-                <button style="justify-content: end; text-align: end;" onclick="window.print()">Print</button>
-            </div>
-        </form>
-    </div> -->
+    var MK2 = window.localStorage.getItem("ML");
+    var HMk2 = window.localStorage.getItem("HMk2");
 
-</body>
+    var MK3 = window.localStorage.getItem("COMVIS");
+    var HMk3 = window.localStorage.getItem("HMk3");
 
-<span id="mhs" hidden><%= JSON.stringify(datalist) %></span>
-<span id="uname" hidden><%= JSON.stringify(currentUser.username)%></span>
-<span id="mk" hidden><%= JSON.stringify(datalist[0].matkul) %></span>
+    var MK4 = window.localStorage.getItem("DM");
+    var HMk4 = window.localStorage.getItem("HMk4");
 
+    var MK5 = window.localStorage.getItem("NLP");
+    var HMk5 = window.localStorage.getItem("HMk5");
+
+  </script>
 
 <script>
-    // Get the modal
-    var modal = document.getElementById('id01');
+  //  var muncul = window.localStorage.getItem("pilihan");
+  //   // console.log(muncul)
     
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+  //   // Nampilin Nilai Rata
+  //   var nilairatamhs = window.localStorage.getItem("meannilai");
+  //   nilairatamhs = (nilairatamhs) ? JSON.parse(nilairatamhs) : [];
+  //   var hasilnilai = window.localStorage.getItem("hasilmhs");
+  //   hasilnilai = (hasilnilai) ? JSON.parse(hasilnilai) : [];
+  //   var rekmatkul = window.localStorage.getItem("rek");
+  //   rekmatkul = (rekmatkul) ? JSON.parse(rekmatkul) : [];
     
-    var mk1 = window.localStorage.getItem("MKA");
-    var mk2 = window.localStorage.getItem("MKB");
-    var mk3 = window.localStorage.getItem("MKC");
-    var mk4 = window.localStorage.getItem("MKD");
-    var mk5 = window.localStorage.getItem("MKE");
+    // console.log(nilairatamhs)
+    
+    // for(var a = 0; a < mhs.length; a++){
+    //     if(mhs[a].name == muncul){
+    //         document.getElementById("tampilan").innerHTML = mhs[a].name;
+    //         document.getElementById("rekomendasi").innerHTML = mhs[a].rekomendasi;
+    //         // console.log(mhs[a].name)
+    //         document.getElementById("meannilai").innerHTML = nilairatamhs[a];
+    //         document.getElementById("hasil").innerHTML = hasilnilai[a];
+    //         document.getElementById("rek").innerHTML = rekmatkul[a];
+    //     }
+    // }
 
-    var MKMin= [mk1,mk2,mk3,mk4,mk5];
-    document.getElementById("MKA"+0).innerHTML = mk1;
-    document.getElementById("MKA"+1).innerHTML = mk2;
-    document.getElementById("MKA"+2).innerHTML = mk3;
-    document.getElementById("MKA"+3).innerHTML = mk4;
-    document.getElementById("MKA"+4).innerHTML = mk5;
+  
 </script>
 
+<!-- "document.getElementById('id01').style.display='block';  -->
 </html>

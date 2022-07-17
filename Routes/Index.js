@@ -2,8 +2,8 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var schemaDataLogin = require("../models/ModelLogin");
-var schemaDaftarMK = require("../models/ModelMK");
-var schemaUsers = require("../models/DataUsers");
+var schemaHistori = require("../models/DataHistori");
+var schemaTest = require("../models/DataTest");
 
 router.get("/", function(req, res) {
   res.render("Home");
@@ -26,7 +26,7 @@ router.get("/Register", function(req, res) {
       } passport.authenticate("local")( req, res,function () {
         res.render("Login");  
       });  
-    });});
+  });});
 
 router.post("/Login", passport.authenticate("local", 
   {
@@ -40,7 +40,7 @@ router.post("/Login", passport.authenticate("local",
 
       }
       else{
-        console.log('Login As Mhs')
+        console.log('Login As Mhs/User')
 
         res.redirect('/IndexMhs')
       }
@@ -50,37 +50,29 @@ router.get("/IndexAdmin", function(req, res) {
   res.render("IndexAdmin");
 });
 
+router.get("/DRek", function(req, res) {
+  res.render("DRek");
+});
+
 
 router.get("/Login", function(req, res) {
   res.render("Login");
 });
 
+router.get("/inputNilai", function(req, res) {
+  res.render("inputNilai");
+});
+
 router.get("/IndexMhs", (req, res)=>{
-  schemaUsers.find({}, function(err,data) {
+  schemaHistori.find({}, function(err,data) {
     res.render("IndexMhs",{
       datalist : data
     })
   })
 });
 
-router.get("/DRek", (req, res)=>{
-  schemaDaftarMK.find({}, function(err,data) {
-    res.render("DRek",{
-      datalist : data
-    })
-  })
-});
-
-router.get("/DMatkul", (req, res)=>{
-  schemaDaftarMK.find({}, function(err,data) {
-    res.render("DMatkul",{
-      datalist : data
-    })
-  })
-});
-
 router.get("/Rekomendasi", (req, res)=>{
-  schemaUsers.find({}, function(err,data) {
+  schemaTest.find({}, function(err,data) {
     res.render("Rekomendasi",{
       datalist : data
     })
@@ -89,7 +81,7 @@ router.get("/Rekomendasi", (req, res)=>{
 
 
 router.get("/DNilaiAdm", (req, res)=>{
-  schemaUsers.find({}, function(err,data) {
+  schemaTest.find({}, function(err,data) {
     res.render("DNilaiAdm",{
       datalist : data
     })
@@ -97,12 +89,25 @@ router.get("/DNilaiAdm", (req, res)=>{
 });
 
 router.get("/DNilaiMhs", (req, res)=>{
-  schemaUsers.find({}, function(err,data) {
+  schemaTest.find({}, function(err,data) {
     res.render("DNilaiMhs",{
       datalist : data
     })
   })
 });
+
+router.get("/input", function(req, res) {
+  res.render("input");
+});
+
+router.get("/HasilRek", (req, res)=>{
+  schemaHistori.find({}, function(err,data) {
+    res.render("HasilRek",{
+      datalist : data
+    })
+  })
+});
+
 
 
 module.exports = router;

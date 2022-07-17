@@ -72,50 +72,38 @@
   <div class="body-form" style="margin: auto; justify-content: center; text-align: left; padding-left: 10%; padding-right: 10%;">
     
     <h3>Nama Mahasiswa : <span id="unamemhs"><%= currentUser.username %> </span></h3>
-
     <% for(var a=0; a < datalist.length;a++) { %>
       <% if(datalist[a].Nama == currentUser.username){ %>
-        <h3>NIM Mahasiswa : <span><%= datalist[a].currentUser.NIM %></span></h3>
+        <h3>NIM Mahasiswa : <span id=""><%= datalist[a].NIM %> </span></h3>
       <% } %>
     <% } %>
-    <!-- <%= JSON.stringify(currentUser.username) %> -->
-    <br><br>
 
     <div class="List" style="padding-top: 20px;">
       <table>
         <tr>
-          <th rowspan="2">Matakuliah</th>
-          <th colspan="3">Nilai</th>
+          <th>Matakuliah</th>
+          <th>Nilai</th>
         </tr>
-        <tr>
-          <th>UTS</th>
-          <th>UAS</th>
-          <th>Tugas</th>
-        </tr>
-        
-        <tr>
-          <% for(var a=0; a < datalist.length;a++) { %>
+
+        <% var Total = 0; %>
+        <% for(var a=0; a < datalist.length; a++) { %>
+          <% for(var b=0; b < datalist[a].matkul.length; b++) { %>
             <% if(datalist[a].Nama == currentUser.username){ %>
-              <% for(var b=0; b < datalist[a].matkul.length; b++) { %>
-                <td colspan="3"><%= datalist[a].matkul[b].nama_MK %></td>
-              </tr>
+              <tr>
+                <% Total = Total + parseInt(datalist[a].matkul[b].nilai) %>
+                <td><%= datalist[a].matkul[b].nama_MK %></td>
+                <td><%= datalist[a].matkul[b].nilai %></td>
+                <% } %>
               <% } %>
+              </tr>
             <% } %>
-          <% } %>
-        <!-- <% for(var a=0; a < datalist.length;a++) { %>
-          <tr>
-            <td><%= currentUser.username %></td>
-            <td><%= datalist[a].nim %></td>
-            <% for(var b=0; b < datalist[a].matkul.length; b++) { %>
-              <td><%= datalist[a].matkul[b].nilai %></td>
-            <% } %>
-            <td><%= datalist[a].rekomendasi%></td>
-          </tr>
-          <% } %> -->
     </table>
   </div>
-  <span id="mhs" hidden><%= JSON.stringify(datalist) %></span>
-  <h3 style="justify-content: center; text-align: center; margin: auto;"> Rata-Rata Nilai :</h3>
+
+  <br>
+  <h3 style="justify-content: center; text-align: center; margin: auto;"> 
+    Rata-Rata Nilai : <%= Math.ceil(Total / datalist[0].matkul.length) %>
+  </h3>
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
@@ -123,10 +111,6 @@
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
   </footer>
 </body>
-
-<script>
-  var unamemhs = JSON.parse($('#unamemhs').text());
-  $('#unamemhs').remove();
-  console.log(unamemhs)
-</script>
 </html>
+
+

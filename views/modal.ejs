@@ -1,0 +1,154 @@
+<div class="modal" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <form action="/datamatakuliah?_method=PUT" method="POST">
+
+              <label for="Nama">Nama</label>
+              <input
+                type="text"
+                class="form-control"
+                id="Nama"
+                name="Nama"
+                placeholder="Enter Nama"
+                required
+              />
+              <label for="NIM">NIM</label>
+              <input
+                type="text"
+                class="form-control"
+                id="NIM"
+                name="NIM"
+                placeholder="Enter NIM"
+                required
+              />
+              
+              <% for (var a=0;a<9;a++){ %>
+                <% var nama_MK = "nama_MK" + a; %>
+                <% var nilai = "nilai" + a; %>
+                <% var hasil = "hasil" + a; %>
+                <label for="<%=nama_MK%>" >Nama Matakuliah <%= matakuliahd[0].matkul[a].nama_MK %></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="<%=nama_MK%> "
+                  name="<%=nama_MK%>"
+                  placeholder="Enter MK"
+                  required
+                />  
+
+                <label for="<%=nilai%>" >nilai matakuliah </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="<%=nilai%> "
+                  name="<%=nilai%>"
+                  placeholder="Enter nilai"
+                  required
+                />  
+
+                <label for="<%=hasil%>" >hasil</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="<%=hasil%> "
+                  name="<%=hasil%>"
+                  placeholder="Enter nilai"
+                  required
+                />  
+                <%}%>
+    
+        
+              <input type="hidden" class="id" name="id" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+</div>
+
+<div
+class="modal fade"
+id="add_modal"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+  <div class="modal-content">
+    <div class="modal-header">
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+      </button>
+    </div>
+    <form action="/datamatakuliah" method="POST">
+
+              <label for="Nama">Nama></label>
+              <input
+                type="text"
+                class="form-control"
+                id="Nama"
+                name="Nama"
+                placeholder="Enter Nama"
+                required
+              />
+              <label for="NIM">NIM</label>
+              <input
+                type="text"
+                class="form-control"
+                id="NIM"
+                name="NIM"
+                placeholder="Enter NIM"
+                required
+              />
+              
+              
+              <% for (var a=0;a<9;a++){ %>
+                <% var nama_MK = "nama_MK" + a; %>
+                <% var nilai = "nilai" + a; %>
+                <% var hasil = "hasil" + a; %>
+                <label for="<%=nama_MK%>" >Nama Matakuliah</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="<%=nama_MK%> "
+                  name="<%=nama_MK%>"
+                  placeholder="Enter MK"
+                  required
+                />  
+
+                <label for="<%=nilai%>" >nilai matakuliah </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="<%=nilai%> "
+                  name="<%=nilai%>"
+                  placeholder="Enter nilai"
+                  required
+                />  
+
+                <label for="<%=hasil%>" >hasil</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="<%=hasil%> "
+                  name="<%=hasil%>"
+                  placeholder="Enter nilai"
+                  required
+                />  
+                <%}%>
+  
+
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary">Input</button>
+    </form>
+</div>
+</div>

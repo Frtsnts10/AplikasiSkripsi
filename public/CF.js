@@ -398,7 +398,7 @@ for (var c = 0; c < a.length; c++) {
 
 // rata-Nilai MK
 for (var c = 0; c < 9; c++) {
-  rataMK[c] = Math.ceil(totalMK[c] / a.length);
+  rataMK[c] = Math.ceil(totalMK[c] / 9);
 }
 
 
@@ -435,17 +435,10 @@ for (var c = 0; c < a.length; c++) {
   for (var b = 0; b < a[c].matkul.length; b++) {
     for (var d = 0; d < a[c].matkul[b].MK.length; d++) {
       if (d == 0) {
-        nilaibaru.M1[c] = (a[c].matkul[b].MK[d].Hasil - rataMhs[d]);
+        nilaibaru.M1[c] = (a[c].matkul[b].MK[d].Nilai - rataMK[d]);
       } else if (d == 1) {
-        nilaibaru.M2[c] = (a[c].matkul[b].MK[d].Hasil - rataMhs[d]);
+        nilaibaru.M2[c] = (a[c].matkul[b].MK[d].Nilai - rataMK[d]);
       } 
-      // else if (d == 2) {
-      //   nilaibaru.K3[c] = (a[c].matkul[b].MK[d].Hasil - rataMhs[d]);
-      // } else if (d == 3) {
-      //   nilaibaru.K4[c] = (a[c].matkul[b].MK[d].Hasil - rataMhs[d]);
-      // } else if (d == 4) {
-      //   nilaibaru.K5[c] = (a[c].matkul[b].MK[d].Hasil - rata[d]);
-      // }
     }
   }
 }

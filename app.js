@@ -7,7 +7,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var methodOverride = require("method-override");
 var indexRoutes = require("./Routes/Index");
-
+const matakuliahRouter= require("./routes/datamatakuliah");
 var schemaDataLogin = require("./models/ModelLogin");
 
 app.use(require("express-session")({
@@ -45,7 +45,7 @@ app.use(methodOverride("_method"));
 //seedDb();
 
 app.use("/", indexRoutes);
-
+app.use("/datamatakuliah",matakuliahRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`app listening on port ${port}`));
